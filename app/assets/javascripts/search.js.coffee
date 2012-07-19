@@ -44,21 +44,23 @@ $ bind = ()->
   # Logic for when the delete-image is clicked  
   $('.search .results .result-div .delete-image').click ->
     parent = $(this).parent()
-    if parent.hasClass('checked-result')
-      parent.removeClass('checked-result')
-      parent.css({'background-color':'#00F107'}).animate({'background-color':offWhite}, 1000);
-      parent.find('.check-image').show()
-    else 
-      parent.hide('drop', 1000)
-    parent.addClass(deletedClass)
+    parent.toggleClass(deletedClass)
+    #if parent.hasClass('checked-result')
+    #  parent.removeClass('checked-result')
+    #  parent.css({'background-color':'#00F107'}).animate({'background-color':offWhite}, 1000);
+    #  parent.find('.check-image').show()
+    #else 
+    #  #parent.hide('drop', 1000)
+    #  parent.addClass(deletedClass)
 
   # Perform a highlight-fade animation when the check mark is clicked
   $('.search .results .result-div .check-image').click ->
     parent = $(this).parent()
 #    parent.css({'background-color':'#90FD54'}).animate({'background-color':'#8FFF92'}, 1000)
-    parent.css({'background-color':'#00F107'}).animate({'background-color':'#8FFF92'}, 1000)
-    parent.addClass(checkedClass)
-    $(this).hide()
+    #parent.css({'background-color':'#00F107'}).animate({'background-color':'#8FFF92'}, 1000)
+    #parent.addClass(checkedClass)
+    #$(this).hide()
+    parent.toggleClass(checkedClass)
 
   unbindDeleteImageClicks = () ->
     $('.search .results .result-div .delete-image').unbind('click')

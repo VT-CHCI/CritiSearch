@@ -98,4 +98,12 @@ $offWhite: #F1F1F1;
     }
   }
 
+  .deleted-result {
+    text-decoration:  line-through;
+  }
+
+  .checked-result {
+    background-color:#8FFF92;
+  }
+
 } /* End .search */
