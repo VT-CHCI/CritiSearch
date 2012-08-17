@@ -18,4 +18,7 @@ module ApplicationHelper
     return false;
   end
 
+  def on_results_page
+    return current_page?("search")
+  end
 end
