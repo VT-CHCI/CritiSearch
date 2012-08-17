@@ -1,5 +1,5 @@
 <% @webSearch.each do |web| %>
-  <div class="result-div">
+  <div class="result-div" order="<%= countAndNext %>">
     <%= image_tag("x-mark.png", class: "delete-image", style: "display:none;") %>
     <div class="content">
       <p>
