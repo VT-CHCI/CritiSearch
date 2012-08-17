@@ -5,9 +5,13 @@ $(document).ready(function() {
 
   var rearrangements = 0;
 
+  function enableResultEvents () {
+    $('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
+    clickifyResultsAndAnnotations();
+  }
 	// When a result-div's content is moused-over, hide all other check or delete
  	// images and show only the ones for this result
-	$('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
+	
 
 	function searchResultMouseEnter () {
 		var parent = $(this).parent();
@@ -32,39 +36,45 @@ $(document).ready(function() {
 	}
 
 	//when a search result is clicked: 
-	$(".result-title a").click(function() {
-    console.log("clicked: " + $(this).text());
-  });
+	
 
- 	// Logic for when the delete-image is clicked  
-  $('.search .results .result-div .delete-image').click(function() {
-    if ($(this).parent().hasClass(deletedClass)) {
-      if (--rearrangements == 0) {
-        $("#rearrange").addClass("hidden");
-      }
-    }
-    else {
-      if (rearrangements++ == 0) {
-        $("#rearrange").removeClass("hidden"); 
-      }
-    }
-    $(this).parent().toggleClass(deletedClass);
-  });
+  function clickifyResultsAndAnnotations () {
+    $(".result-title a").click(function() {
+      console.log("clicked: " + $(this).text());
+    });
+    
+    $('.search .results .result-div .delete-image').unbind('click');
+    $('.search .results .result-div .check-image').unbind('click');
 
-  // Perform a highlight-fade animation when the check mark is clicked
-  $('.search .results .result-div .check-image').click(function() {
-    if ($(this).parent().hasClass(checkedClass)) {
-      if (--rearrangements == 0) {
-        $("#rearrange").addClass("hidden");
+    $('.search .results .result-div .delete-image').click(function() {
+      if ($(this).parent().hasClass(deletedClass)) {
+        if (--rearrangements == 0) {
+          $("#rearrange").addClass("hidden");
+        }
       }
-    }
-    else {
-      if (rearrangements++ == 0) {
-        $("#rearrange").removeClass("hidden"); 
+      else {
+        if (rearrangements++ == 0) {
+          $("#rearrange").removeClass("hidden"); 
+        }
       }
-    }
-    $(this).parent().toggleClass(checkedClass);
-  });
+      $(this).parent().toggleClass(deletedClass);
+    });
+
+    $('.search .results .result-div .check-image').click(function() {
+      if ($(this).parent().hasClass(checkedClass)) {
+        if (--rearrangements == 0) {
+          $("#rearrange").addClass("hidden");
+        }
+      }
+      else {
+        if (rearrangements++ == 0) {
+          $("#rearrange").removeClass("hidden"); 
+        }
+      }
+      $(this).parent().toggleClass(checkedClass);
+    });
+    
+  }
 
   $(window).scroll(function() {
     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -81,7 +91,7 @@ $(document).ready(function() {
     var addtlResults = $('.ajax-load-wrapper').detach();
     addtlResults.appendTo('.results');
     // addtlResults.mouseenter(searchResultMouseEnter);
-    $('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
+    enableResultEvents();
   }
 
   // TODO: Make an Ajax request for more results if there are fewer than 5 results currenly shown
@@ -96,5 +106,7 @@ $(document).ready(function() {
     locked = false;
     $(this).hide();
   });
+
+  enableResultEvents();
 
 });
