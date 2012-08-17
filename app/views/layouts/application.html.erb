@@ -15,28 +15,29 @@
 <div class="<%= search_bar_location %>">
   <% if on_home_page %>
     <div id="logo">
-       <%= image_tag("logo.png", class: "picture") %>
+      <%= image_tag("logo.png", class: "picture") %>
     </div>
   <% end %>
   <%= render 'search/search_bar' %>
 </div>
 
 <% if on_home_page %>
-    <center><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHit Enter to search!</b></center>
-<% end %>
-
-
-<% if !on_home_page %>
+  <center><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHit Enter to search!</b></center>
+<% else %>
   <div id="right-nav-menu-wrapper">
-    <div id="right-nav-menu">
-      <%= link_to "Recent Searches", @list %>
-    </div>
+  <div id="right-nav-menu">
+    <%= link_to "Recent Searches", @list %>
+    <br />
+      <a class="hidden" id="rearrange" href="#">Rearrange</a>
   </div>
+</div>
 <% end %>
+
+
+
 
 <div id="main">
   <%= yield %>
 </div>
-
 </body>
 </html>
