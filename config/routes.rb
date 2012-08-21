@@ -1,5 +1,7 @@
 Platypus::Application.routes.draw do
 
+  resources :admins
+
   resources :course_offerings
 
   resources :admin_assignments
