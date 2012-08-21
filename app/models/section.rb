@@ -4,4 +4,5 @@ class Section < ActiveRecord::Base
   belongs_to :teacher, :class_name => "Person"
   has_many :section_assignments
   has_many :students, :class_name => "Person", :through => :section_assignments
+  has_many :meeting_times, :dependent => :destroy
 end

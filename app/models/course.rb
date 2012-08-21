@@ -1,5 +1,6 @@
 class Course < ActiveRecord::Base
   has_many :course_offerings
+  has_many :sections
   has_many :schools, :through => :course_offerings
 
   def school?(school)
