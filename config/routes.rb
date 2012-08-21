@@ -1,4 +1,25 @@
 Platypus::Application.routes.draw do
+
+  resources :course_offerings
+
+  resources :admin_assignments
+
+  resources :role_assignments
+
+  resources :section_assignments
+
+  resources :meeting_times
+
+  resources :sections
+
+  resources :courses
+
+  resources :schools
+
+  resources :roles
+
+  devise_for :people, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+
   get "search/index"
   get "search/query"
   get "search/ajax"

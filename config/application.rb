@@ -56,5 +56,8 @@ module Platypus
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #http://stackoverflow.com/questions/3546289/override-devise-registrations-controller
+    # paths.app.views << "app/views/devise"
   end
 end

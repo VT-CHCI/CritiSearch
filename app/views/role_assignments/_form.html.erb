@@ -1,0 +1,26 @@
+<%= form_for(@role_assignment) do |f| %>
+  <% if @role_assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role_assignment.errors.count, "error") %> prohibited this role_assignment from being saved:</h2>
+
+      <ul>
+      <% @role_assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :person %><br />
+    <%= collection_select(:person, :person_id, Person.all, :id, :first_name) %>
+    <!-- <%= f.text_field :person %> -->
+  </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= collection_select(:role, :role_id, Role.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

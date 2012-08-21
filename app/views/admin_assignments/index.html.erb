@@ -1,0 +1,25 @@
+<h1>Listing admin_assignments</h1>
+
+<table>
+  <tr>
+    <th>Person</th>
+    <th>School</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_assignments.each do |admin_assignment| %>
+  <tr>
+    <td><%= admin_assignment.person %></td>
+    <td><%= admin_assignment.school %></td>
+    <td><%= link_to 'Show', admin_assignment %></td>
+    <td><%= link_to 'Edit', edit_admin_assignment_path(admin_assignment) %></td>
+    <td><%= link_to 'Destroy', admin_assignment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Admin assignment', new_admin_assignment_path %>

@@ -58,3 +58,9 @@ gem 'nokogiri'
 
 # Use gsearch-parser gem
 gem "gsearch-parser", "~> 0.3.8"
+
+#use devise for auth
+gem 'devise'
+
+#use cancan for permissions
+gem 'cancan'

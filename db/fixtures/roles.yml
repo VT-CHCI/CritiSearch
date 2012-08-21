@@ -1,0 +1,12 @@
+super_admin:
+	name:	"SuperAdmin"
+
+# such as a school tech person
+school_admin:
+	name: "SchoolAdmin"
+
+teacher:
+	name: "Teacher"
+
+student:
+	name: "Student"

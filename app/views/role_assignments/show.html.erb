@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Person:</b>
+  <%= @role_assignment.person %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @role_assignment.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_role_assignment_path(@role_assignment) %> |
+<%= link_to 'Back', role_assignments_path %>
