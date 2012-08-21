@@ -31,6 +31,45 @@ class Ability
       can :manage, :all
 
     elsif person.role? :school_admin
+
+      # course
+      # everything
+
+      # meeting time
+      # create
+      # only modify the ones for their school?
+
+      # person
+      # create
+      # only modify the ones for their school?
+
+      # course offering
+      # only the ones for their school?
+
+      # school
+      # create
+      # edit those for which they're admin
+
+      # admin assignment
+      # only themselves
+
+      # search item
+      # search list
+      # only those related to their schools
+
+      # section
+      # those for their schools
+
+      # section assignment
+      # those for their schools
+
+      # role
+      # no access?
+
+      # role assignment
+      # change only teachers and students?
+
+      can :create, School
       can :manage, School do |school|
         person.school? school.name
       end
@@ -43,30 +82,58 @@ class Ability
         person.school? section_assignment.school
       end
 
+      can :create, CourseOffering
       can :manage, CourseOffering do |course_offering|
         person.school? course_offering.school
       end
 
-      can :manage, Course do |course|
-        course.no_school? || match_in_lists?(course.schools, person.schools)
-      end
+      can :manage, Course
 
       can :manage, MeetingTime do |meeting_time|
         person.school? meeting_time.section.school.name
       end
 
+      can :create, Person
+      can :manage, Person do |p|
+        p.role? :teacher || p.role? :student
+      end
+
+      can :manage, SearchItem do |search_item|
+        can? :manage, search_item.search_list
+      end
+
+      can :manage, SearchList do |search_list|
+        can? :manage, search_list.person
+      end
+
+      can :manage, RoleAssignment do |role_assignment|
+        can? :manage, role_assignment.person
+      end
+
 
     elsif person.role? :teacher
-      can :read, [Product, Asset]
-      # manage products, assets he owns
-      can :manage, Product do |product|
-        product.try(:owner) == person
-      end
-      can :manage, Asset do |asset|
-        asset.assetable.try(:owner) == person
+      
+      can :create, Person
+      can :manage, Person do |p|
+        p.role? :student || p == person
       end
 
-    elsif person.role? :student
+      can :create, SectionAssignment
+      can :manage, SectionAssignment do |section_assignment|
+        section_assignment.section.teacher == person
+      end
+
+      can :manage, SearchItem do |search_item|
+        can? :manage, search_item.search_list
+      end
+
+      can :manage, SearchList do |search_list|
+        can? :manage, search_list.person
+      end
+
+
+    #elsif person.role? :student
+      #
     end
   end
 

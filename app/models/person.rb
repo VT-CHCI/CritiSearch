@@ -28,4 +28,16 @@ class Person < ActiveRecord::Base
   def email_required?
     false
   end
+
+  def sections
+    if self.role? :super_admin
+      Section.all
+    elsif self.role? :school_admin
+      Section.where(:school_id => current_person.schools)
+    elsif self.role? :teacher
+      Section.where(:teacher_id => self.id)
+    else
+      []
+    end
+  end
 end
