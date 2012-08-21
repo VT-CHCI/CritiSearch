@@ -1,0 +1,25 @@
+<%= form_for(@section_assignment) do |f| %>
+  <% if @section_assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@section_assignment.errors.count, "error") %> prohibited this section_assignment from being saved:</h2>
+
+      <ul>
+      <% @section_assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :person %><br />
+    <%= f.text_field :person %>
+  </div>
+  <div class="field">
+    <%= f.label :section %><br />
+    <%= f.text_field :section %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

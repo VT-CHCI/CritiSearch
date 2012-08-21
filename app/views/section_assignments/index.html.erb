@@ -1,0 +1,25 @@
+<h1>Listing section_assignments</h1>
+
+<table>
+  <tr>
+    <th>Person</th>
+    <th>Section</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @section_assignments.each do |section_assignment| %>
+  <tr>
+    <td><%= section_assignment.person %></td>
+    <td><%= section_assignment.section %></td>
+    <td><%= link_to 'Show', section_assignment %></td>
+    <td><%= link_to 'Edit', edit_section_assignment_path(section_assignment) %></td>
+    <td><%= link_to 'Destroy', section_assignment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Section assignment', new_section_assignment_path %>

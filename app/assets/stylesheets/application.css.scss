@@ -25,11 +25,16 @@ $offWhite: #F1F1F1;
   height: 35px;
   border-bottom: 1px solid black;
   z-index: 1;
+  color: #fff;
 
   /* Gradient */
   background: -webkit-gradient(linear, left top, left bottom, from($gradientStart), to($gradientEnd));
   background: -moz-linear-gradient(top, $gradientStart, $gradientEnd);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0000', endColorstr='#6F0404');  
+
+  a {
+    color: #fff;
+  }
 
 }
 
@@ -77,6 +82,9 @@ $offWhite: #F1F1F1;
 #main {
   /* Give enough space above for the banner */
   margin-top: 60px;
+
+  /* give enough space for the logo too! */
+  margin-left: 180px;
 }
 
 #logo {
@@ -140,7 +148,7 @@ $offWhite: #F1F1F1;
 
 .left-logo {
   float: left;
-  margin-top: 10px;
+  margin-top: -10px;
   clear: none;
   position: fixed;
 }

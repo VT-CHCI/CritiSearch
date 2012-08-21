@@ -1,0 +1,49 @@
+<h1>Listing meeting_times</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+    <th>Period</th>
+    <th>Starttime</th>
+    <th>Endtime</th>
+    <th>Section</th>
+    <th>Startdate</th>
+    <th>Enddate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meeting_times.each do |meeting_time| %>
+  <tr>
+    <td><%= meeting_time.description %></td>
+    <td><%= meeting_time.monday %></td>
+    <td><%= meeting_time.tuesday %></td>
+    <td><%= meeting_time.wednesday %></td>
+    <td><%= meeting_time.thursday %></td>
+    <td><%= meeting_time.friday %></td>
+    <td><%= meeting_time.saturday %></td>
+    <td><%= meeting_time.sunday %></td>
+    <td><%= meeting_time.period %></td>
+    <td><%= meeting_time.startTime %></td>
+    <td><%= meeting_time.endTime %></td>
+    <td><%= meeting_time.section %></td>
+    <td><%= meeting_time.startDate %></td>
+    <td><%= meeting_time.endDate %></td>
+    <td><%= link_to 'Show', meeting_time %></td>
+    <td><%= link_to 'Edit', edit_meeting_time_path(meeting_time) %></td>
+    <td><%= link_to 'Destroy', meeting_time, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Meeting time', new_meeting_time_path %>

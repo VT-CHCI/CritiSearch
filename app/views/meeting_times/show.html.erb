@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @meeting_time.description %>
+</p>
+
+<p>
+  <b>Monday:</b>
+  <%= @meeting_time.monday %>
+</p>
+
+<p>
+  <b>Tuesday:</b>
+  <%= @meeting_time.tuesday %>
+</p>
+
+<p>
+  <b>Wednesday:</b>
+  <%= @meeting_time.wednesday %>
+</p>
+
+<p>
+  <b>Thursday:</b>
+  <%= @meeting_time.thursday %>
+</p>
+
+<p>
+  <b>Friday:</b>
+  <%= @meeting_time.friday %>
+</p>
+
+<p>
+  <b>Saturday:</b>
+  <%= @meeting_time.saturday %>
+</p>
+
+<p>
+  <b>Sunday:</b>
+  <%= @meeting_time.sunday %>
+</p>
+
+<p>
+  <b>Period:</b>
+  <%= @meeting_time.period %>
+</p>
+
+<p>
+  <b>Starttime:</b>
+  <%= @meeting_time.startTime %>
+</p>
+
+<p>
+  <b>Endtime:</b>
+  <%= @meeting_time.endTime %>
+</p>
+
+<p>
+  <b>Section:</b>
+  <%= @meeting_time.section %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @meeting_time.startDate %>
+</p>
+
+<p>
+  <b>Enddate:</b>
+  <%= @meeting_time.endDate %>
+</p>
+
+
+<%= link_to 'Edit', edit_meeting_time_path(@meeting_time) %> |
+<%= link_to 'Back', meeting_times_path %>

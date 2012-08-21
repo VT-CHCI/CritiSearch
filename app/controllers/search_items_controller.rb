@@ -43,6 +43,12 @@ class SearchItemsController < ApplicationController
     @list = current_search_list
     @search_item = @list.search_items.build(params[:search_item])
 
+    if person_signed_in?
+      @search_item.person = current_person
+    else
+      @search_item.person = current_person_guess
+    end
+
     respond_to do |format|
       if @search_item.save
         format.html { redirect_to @search_item }
