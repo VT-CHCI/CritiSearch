@@ -57,7 +57,7 @@
   </div>
   <div class="field">
     <%= f.label :section %><br />
-    <%= f.text_field :section %>
+    <%= collection_select(:section, :section_id, Section.where(:school_id => current_person.schools), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :startDate %><br />
