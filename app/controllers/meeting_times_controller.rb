@@ -80,4 +80,12 @@ class MeetingTimesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  before_filter :set_school_time_zone
+  
+  private
+  
+  def set_school_time_zone
+    Time.zone = @meeting_time.section.school.time_zone
+  end
 end
