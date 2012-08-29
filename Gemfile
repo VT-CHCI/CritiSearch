@@ -64,3 +64,6 @@ gem 'devise'
 
 #use cancan for permissions
 gem 'cancan'
+
+
+gem 'httparty'
