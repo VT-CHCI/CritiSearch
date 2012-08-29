@@ -17,8 +17,10 @@ $(document).ready(function() {
 	
 
 	function searchResultMouseEnter () {
+    $(".active-result").removeClass("active-result");
 		var parent = $(this).parent();
     hideContextImages(parent);
+    parent.addClass("active-result");
     parent.find('.delete-image').show();
     parent.find('.rtab-image').show();
   
@@ -26,7 +28,7 @@ $(document).ready(function() {
     // and set the absolute position for the top dynamically
     // Only show image if it does not have the checkedClass
     var checkImage = parent.find('.check-image');
-    var top = parent.height() - checkImage.height() - 3;
+    // var top = parent.height() - checkImage.height() - 3;
     checkImage.css('top', top);
     checkImage.show();
 	}
@@ -50,7 +52,7 @@ $(document).ready(function() {
     $('.search .results .result-div .check-image').unbind('click');
 
     $('.search .results .result-div .delete-image').click(function() {
-      if ($(this).parent().hasClass(deletedClass)) {
+      if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
         if (--rearrangements == 0) {
           $("#rearrange").addClass("hidden");
         }
@@ -60,11 +62,12 @@ $(document).ready(function() {
           $("#rearrange").removeClass("hidden"); 
         }
       }
-      $(this).parent().toggleClass(deletedClass);
+      $(this).parents(".result-div").find("p").toggleClass(deletedClass);
+      $(this).parents(".result-div").toggleClass(deletedClass);
     });
 
     $('.search .results .result-div .check-image').click(function() {
-      if ($(this).parent().hasClass(checkedClass)) {
+      if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
         if (--rearrangements == 0) {
           $("#rearrange").addClass("hidden");
         }
@@ -74,7 +77,8 @@ $(document).ready(function() {
           $("#rearrange").removeClass("hidden"); 
         }
       }
-      $(this).parent().toggleClass(checkedClass);
+      $(this).parents(".result-div").find("p").toggleClass(checkedClass);
+      $(this).parents(".result-div").toggleClass(checkedClass);
     });
     
   }

@@ -38,16 +38,26 @@ $offWhite: #F1F1F1;
 
 }
 
+.left-logo {
+    clear: none;
+    float: left;
+    margin-top: 22px;
+    position: fixed;
+}
+
 #right-nav-menu-wrapper {
   width: 100%;
   position: fixed;
+  margin-top: 15px;
 }
 
 #right-nav-menu {
-  width: 200px;
-  margin: 0px auto;
-  position: relative;
-  left: 450px;
+  // width: 200px;
+  // margin: 0px auto;
+  // position: relative;
+  // left: 450px;
+  float:right;
+  margin-right: 20px;
 
   a {
     text-decoration: none;
@@ -81,15 +91,18 @@ $offWhite: #F1F1F1;
 
 #main {
   /* Give enough space above for the banner */
-  margin-top: 60px;
+  margin-top: 53px;
 
   /* give enough space for the logo too! */
   margin-left: 180px;
 }
 
 #logo {
-  margin-top: -150px;
+  margin-top: -200px;
   z-index: -10;
+  margin-left: auto;
+  margin-right: auto;
+  width: 732px;
 }
 
 .picture {
@@ -103,10 +116,12 @@ $offWhite: #F1F1F1;
 } 
 
 .top-search-bar {
-  position: fixed;
+  // position: fixed;
   width: 100%;
-  top: 2px;
-  z-index: 5;
+  // top: 2px;
+  // z-index: 5;
+  clear: none;
+  display: inline;
 }
 
 .search-wrapper {
@@ -145,12 +160,11 @@ $offWhite: #F1F1F1;
   display: none;
   visibility: hidden;
 }
-
-.left-logo {
-  float: left;
-  margin-top: -10px;
-  clear: none;
-  position: fixed;
+.logo {
+  
+  text {
+    font-family:SchoolHouse Cursive B;
+  }
 }
 
 // label {
@@ -161,3 +175,35 @@ $offWhite: #F1F1F1;
 //   display: inline;
 
 // }
+
+.field.day {
+  display:  inline;
+  clear:  none;
+  float: left;
+  margin-right: 20px;
+}
+
+dt {
+  font-weight: bold;
+}
+
+#admin {
+  text-align: right;
+}
+
+.dashboard {
+  padding-top: 3px;
+  float: left;
+  width: 33%;
+  display: inline;
+  clear: none;
+  font-size: 14px;
+}
+
+table {
+  border-spacing: 10px;
+}
+
+.meeting-name {
+  text-decoration: underline;
+}

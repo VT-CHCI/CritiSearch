@@ -10,13 +10,89 @@ $offWhite: #F1F1F1;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+
+  .left-logo {
+    float: left;
+    margin-top: 22px;
+    clear: none;
+    position: fixed;
+  }
+
+  .results {
+    margin-top: -28px;
+  }
+
   .result-div {
-    position: relative;
-    max-width: 610px;
-    margin: 0px auto;
+    // position: relative;
+    min-width: 500px;
+    margin-right: 140px;
+    // margin: 0px auto;
     
+    p {
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 2px;
+    }
+
+    p.checked-result {
+      background-color:#8FFF92;
+    }
+
+    p.deleted-result {
+      text-decoration:  line-through;
+    }
+
+    .controls {
+      width: 28px;
+      // height: 50px;
+      float: right;
+      clear: none;
+      margin-top: 20px;
+
+      .rtab-container {
+        background: url("right_tab_only.png") no-repeat;
+        background-size: 22px 65px;
+        height: 76px;
+        display: none;
+      }
+
+      .rtab-image {
+        // float: right;
+        // top: -85px;
+        z-index:-1;
+        height:124%;
+        position: relative;
+      }
+
+      .check-image {
+        // position: absolute;
+        // top: -70px;
+        // left: 622px;
+        cursor: pointer;
+        z-index:3;
+        margin-top: 6px;
+      }
+
+      .delete-image {
+        // position:absolute;
+        // top: 9px;
+        // left: 622px;
+        cursor: pointer;
+        z-index:2;
+        margin-top: 8px;
+      }
+    }
 
     .content {
+
+      float:left;
+      clear: none;
+      margin-right: -28px;
+      width: 100%;
+
+      p {
+        margin-right: 28px;
+      }
      
       em {
         font-style: normal;
@@ -50,42 +126,17 @@ $offWhite: #F1F1F1;
       }
 
     } /* End .content */
-
-    .delete-image {
-      position:absolute;
-      top: 9px;
-      left: 622px;
-      cursor: pointer;
-      z-index:2;
-    }
-
-    .check-image {
-      position: absolute;
-      top: -10px;
-      left: 622px;
-      cursor: pointer;
-      z-index:3;
-    }
-
-    .rtab-image {
-      position:absolute;
-      top: -7px;
-      left: -12px;
-      z-index:-1;
-      height:124%;
-      width:655px;
-    }
-
-    .visit-image {
-      position:absolute;
-      top: -6px;
-      left: -32px;
-      z-index:-1;
-      height:124%;
-    }
     
-
   } /* End .result-div */
+
+  .result-div.active-result {
+    p {
+        border: 2px solid #FF0000;
+    }
+    .rtab-container {
+      display: block;
+    }
+  }
 
   .ajax-load-wrapper {
     width: 100%;
@@ -96,14 +147,6 @@ $offWhite: #F1F1F1;
       position: fixed;
       bottom: 0px;
     }
-  }
-
-  .deleted-result {
-    text-decoration:  line-through;
-  }
-
-  .checked-result {
-    background-color:#8FFF92;
   }
 
 } /* End .search */
