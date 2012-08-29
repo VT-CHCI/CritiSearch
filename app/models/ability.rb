@@ -95,7 +95,7 @@ class Ability
 
       can :create, Person
       can :manage, Person do |p|
-        if p.role? :teacher || p.role? :student
+        if (p.role? :teacher) or (p.role? :student)
           true
         else
           false
