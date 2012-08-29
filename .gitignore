@@ -17,5 +17,3 @@
 .DS_Store
 
 *.sublime-workspace
-
-vendor/cache/*
