@@ -25,6 +25,7 @@ class SectionsController < ApplicationController
   # GET /sections/new.json
   def new
     @section = Section.new
+    2.times { @section.meeting_times.build }
 
     respond_to do |format|
       format.html # new.html.erb

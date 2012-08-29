@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :person %><br />
-    <%= f.text_field :person %>
+    <%= f.collection_select(:person_id, Person.all_by_role(:student), :id, :first_name, {:prompt => true}) %>
   </div>
   <div class="field">
     <%= f.label :section %><br />
-    <%= f.text_field :section %>
+    <%= f.collection_select(:section_id, Section.all, :id, :summary, {:prompt => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

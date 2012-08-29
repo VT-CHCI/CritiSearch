@@ -12,13 +12,83 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :course %><br />
-    <%= f.text_field :course %>
+    
+    <%= f.collection_select(:course_id, Course.all, :id, :name, {:prompt => true}) %>
   </div>
   <div class="field">
-    <%= f.label :school %><br />
-    <%= f.text_field :school %>
+    <%= f.collection_select(:school_id, School.all, :id, :name, {:prompt => true}) %>
   </div>
+
+  <fieldset>
+    <legend>Meeting Times</legend>
+    <%= f.fields_for(:meeting_times) do |builder| %>
+      <fieldset>
+      <!-- <h2>New Meeting Time</h2> -->
+        <legend>New Meeting Time</legend>
+        <p>
+          <div class="field">
+            <%= builder.label :name %><br />
+            <%= builder.text_field :name %>
+          </div>
+          <div class="field">
+            <%= builder.label :description %><br />
+            <%= builder.text_field :description %>
+          </div>
+          <fieldset>
+            <legend>Day(s)</legend>
+            <div class="field day">
+              <%= builder.label :monday %><br />
+              <%= builder.check_box :monday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :tuesday %><br />
+              <%= builder.check_box :tuesday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :wednesday %><br />
+              <%= builder.check_box :wednesday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :thursday %><br />
+              <%= builder.check_box :thursday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :friday %><br />
+              <%= builder.check_box :friday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :saturday %><br />
+              <%= builder.check_box :saturday %>
+            </div>
+            <div class="field day">
+              <%= builder.label :sunday %><br />
+              <%= builder.check_box :sunday %>
+            </div>
+          </fieldset>
+          <div class="field">
+            <%= builder.label :period %><br />
+            <%= builder.text_field :period %>
+          </div>
+          <div class="field">
+            <%= builder.label "Start Time" %><br />
+            <%= builder.time_select :startTime, :prompt => true %>
+          </div>
+          <div class="field">
+            <%= builder.label "End Time" %><br />
+            <%= builder.time_select :endTime, :prompt => true %>
+          </div>
+          <div class="field">
+            <%= builder.label "Start Date" %><br />
+            <%= builder.date_select :startDate, :start_year => Date.today.year, :prompt => true %>
+          </div>
+          <div class="field">
+            <%= builder.label "End Date" %><br />
+            <%= builder.date_select :endDate, :start_year => Date.today.year, :prompt => true %>
+          </div>
+        </p>
+      </fieldset>
+    <% end %>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

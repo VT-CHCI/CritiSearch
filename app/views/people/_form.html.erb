@@ -11,6 +11,23 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :id_number %><br />
+    <%= f.text_field :id_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :roles %><br />
+    <% Role.all.each do |role| %>
+      <%= check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role), :id => "person_role_id_#{role.id}" %>
+      <%= label_tag "person[role_ids][]", role.name, :for => "person_role_id_#{role.id}" %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,6 +1,6 @@
 Platypus::Application.routes.draw do
 
-  resources :people
+  
 
   resources :admins
 
@@ -22,7 +22,18 @@ Platypus::Application.routes.draw do
 
   resources :roles
 
-  devise_for :people, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_for :people, :controllers => {:registrations => "registrations", :sessions => "sessions"} #do
+  #   member do
+  #     get 'preview'
+  #   end
+  # end
+
+  scope "/admin" do
+    resources :people
+  end
+
+  match "/students" => "people#index", :defaults => {:role => :student}
+  match "/teachers" => "people#index", :defaults => {:role => :teacher}
 
   get "search/index"
   get "search/query"
@@ -31,6 +42,9 @@ Platypus::Application.routes.draw do
   resources :search_items
 
   resources :search_lists
+
+  match '/admin' => "admins#index"
+  # match '/students' =>
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

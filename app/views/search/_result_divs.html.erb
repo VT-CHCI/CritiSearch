@@ -1,6 +1,5 @@
 <% @webSearch.each do |web| %>
   <div class="result-div" order="<%= countAndNext %>">
-    <%= image_tag("x-mark.png", class: "delete-image", style: "display:none;") %>
     <div class="content">
       <p>
         <span class="result-title"> <%= link_to web.title.html_safe, 'http://'+strip_tags(web.uri), target: "_blank" %></span><br />
@@ -8,10 +7,12 @@
         <span class="result-uri"><%= link_to web.uri.html_safe, 'http://'+strip_tags(web.uri), target: "_blank"  %></span>
       </p>
     </div> 
-    
-    
-<%= image_tag("thumbs_up.png", class: "check-image", style: "display:none;") %>
-<%= image_tag("right_tab.png", class: "rtab-image", style:"display:none;") %>
-<!-- <%= image_tag("visited_tab.png", class: "visit-image", style:"display:none;") %> -->
+
+    <div class="controls">
+      <div class="rtab-container">
+        <%= image_tag("thumbs_up.png", class: "check-image") %>
+        <%= image_tag("x-mark.png", class: "delete-image") %>
+      </div>
+    </div>
   </div>
 <% end %>

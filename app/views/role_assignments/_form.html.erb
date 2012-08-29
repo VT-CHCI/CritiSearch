@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :person %><br />
-    <%= collection_select(:person, :person_id, Person.all, :id, :first_name) %>
+    <%= f.collection_select(:person_id, Person.all, :id, :first_name, {:prompt => true}) %>
     <!-- <%= f.text_field :person %> -->
   </div>
   <div class="field">
     <%= f.label :role %><br />
-    <%= collection_select(:role, :role_id, Role.all, :id, :name) %>
+    <%= f.collection_select(:role_id, Role.all, :id, :name, {:prompt => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

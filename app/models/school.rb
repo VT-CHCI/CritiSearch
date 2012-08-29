@@ -4,4 +4,7 @@ class School < ActiveRecord::Base
   has_many :course_offerings
   has_many :courses, :through => :course_offerings
   has_many :sections
+
+  validates :name, :presence => true
+  validates :time_zone, :presence => true
 end

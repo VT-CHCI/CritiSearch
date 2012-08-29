@@ -2,14 +2,49 @@
 
 <p>
   <b>Course:</b>
-  <%= @section.course %>
+  <%= @section.course.name %>
 </p>
 
 <p>
   <b>School:</b>
-  <%= @section.school %>
+  <%= @section.school.name %>
 </p>
 
+<p>
+  <b>Meeting Time(s):</b> 
+  <% @section.meeting_times.each_with_index do |meeting_time, index| %>
+    <dl>
+      <% if not meeting_time.name.blank? %>
+        <dt class="meeting-name">Name of Meeting Time</dt>
+        <dd><%= meeting_time.name %></dd>
+        <% if not meeting_time.description.blank? %>
+          <dt>Description</dt>
+          <dd><%= meeting_time.description %></dd>
+        <% end %>
+      <% elsif not meeting_time.description.blank? %>
+        <dt class="meeting-name">Description</dt>
+        <dd><%= meeting_time.description %></dd>
+      <% else %>
+        <dt class="meeting-name">Meeting Time <%= index %></dt>
+      <% end %>
+      <% for day in meeting_time.days_held %>
+        <dd><%= day %></dd>
+      <% end %>
+      <% if not meeting_time.period.blank? %>
+        <dt>Period</dt>
+        <dd><%= meeting_time.period %></dd>
+      <% end %>
+      <% if not meeting_time.startDate.nil? %>
+        <dt>Start Date</dt>
+        <dd><%= meeting_time.startDate %></dd>
+      <% end %>
+      <% if not meeting_time.endDate.nil? %>
+        <dt>End Date</dt>    
+        <dd><%= meeting_time.endDate %></dd>
+      <% end %>
+    </dl>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_section_path(@section) %> |
 <%= link_to 'Back', sections_path %>

@@ -11,8 +11,8 @@
 
 <% @sections.each do |section| %>
   <tr>
-    <td><%= section.course %></td>
-    <td><%= section.school %></td>
+    <td><%= section.course.name %></td>
+    <td><%= section.school.name %></td>
     <td><%= link_to 'Show', section %></td>
     <td><%= link_to 'Edit', edit_section_path(section) %></td>
     <td><%= link_to 'Destroy', section, confirm: 'Are you sure?', method: :delete %></td>

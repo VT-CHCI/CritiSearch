@@ -2,11 +2,17 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @persons = Person.all
+    # redirect_to registrations_path
+    if params[:role]
+      @people = Person.all_by_role(params[:role])
+    else
+      @people = Person.all  
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @persons }
+      format.json { render json: @people }
     end
   end
 
@@ -24,7 +30,12 @@ class PeopleController < ApplicationController
   # GET /people/new
   # GET /people/new.json
   def new
+    # logger.debug "in people#new"
+    # redirect_to new_person_registration_path
     @person = Person.new
+    if params[:role]
+      @person.roles << Role.find_by_name(params[:role])
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +51,14 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
+    # logger.debug "in people#create"
+    
+    params[:person][:role_ids] ||= []
     @person = Person.new(params[:person])
+
+    @person.email = @person.id_number
+    @person.password = @person.first_name
+    @person.password_confirmation = @person.password
 
     respond_to do |format|
       if @person.save
@@ -56,6 +74,10 @@ class PeopleController < ApplicationController
   # PUT /people/1
   # PUT /people/1.json
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     @person = Person.find(params[:id])
 
     respond_to do |format|

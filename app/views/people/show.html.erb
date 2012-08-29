@@ -1,5 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>First Name:</b>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <b>ID Number:</b>
+  <%= @person.id_number %>
+</p>
+
+<p>
+  <b>Roles</b>
+  <ul>
+    <% for role in @person.roles %>
+      <li><%= role.name %></li>
+    <% end %>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

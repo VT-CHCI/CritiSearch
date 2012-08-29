@@ -1,6 +1,7 @@
 class SessionsController < Devise::SessionsController
   view_paths="app/views/devise"
   before_filter :fake_password, :only => [:create]
+  after_filter :resetSession, :only => :destroy
   def new
     resource = build_resource(nil, :unsafe => true)
 
@@ -22,5 +23,9 @@ class SessionsController < Devise::SessionsController
 
   def fake_password
     params[:person][:password] = params[:person][:first_name]
+  end
+
+  def resetSession
+    reset_session
   end
 end 

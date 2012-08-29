@@ -1,14 +1,18 @@
-<h1>Listing persons</h1>
+<h1>Listing people</h1>
 
 <table>
   <tr>
+    <th>First Name</th>
+    <th>ID Number</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @persons.each do |person| %>
+<% @people.each do |person| %>
   <tr>
+    <td><%= person.first_name %></td>
+    <td><%= person.id_number %></td>
     <td><%= link_to 'Show', person %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, confirm: 'Are you sure?', method: :delete %></td>
@@ -17,5 +21,8 @@
 </table>
 
 <br />
-
-<%= link_to 'New person', new_person_path %>
+<% if has_role? %>
+  <%= link_to 'New person', new_person_path(:role => get_role) %>
+<% else %>
+  <%= link_to 'New person', new_person_path %>
+<% end %>

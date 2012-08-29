@@ -12,9 +12,13 @@ class Person < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :authentication_keys => [:id_number]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :id_number, :first_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :id_number, :first_name, :roles_assignments, :roles, :role_ids
+  accepts_nested_attributes_for :roles
 
   belongs_to :suspected_person, :class_name => "Person"
+
+  validates :first_name, :presence => true
+  validates :id_number, :presence => true
 
 
   def role?(role)
@@ -40,4 +44,11 @@ class Person < ActiveRecord::Base
       []
     end
   end
+
+  def self.all_by_role(role)
+    people = []
+    Person.all.each { |person| people << person if person.role? role}
+    return people
+  end
+
 end

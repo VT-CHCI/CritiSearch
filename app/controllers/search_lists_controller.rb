@@ -42,6 +42,13 @@ class SearchListsController < ApplicationController
   def create
     @search_list = SearchList.new(params[:search_list])
 
+    if person_signed_in?
+      logger.debug "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      logger.debug "search_list_controller#create"
+      @search_list.person = current_person
+      logger.debug "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    end
+
     respond_to do |format|
       if @search_list.save
         format.html { redirect_to @search_list, notice: 'Search list was successfully created.' }

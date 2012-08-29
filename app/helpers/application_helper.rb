@@ -15,7 +15,7 @@ module ApplicationHelper
     if current_page?('/')
       return true
     end
-    return false;
+    return false
   end
 
   def on_results_page
