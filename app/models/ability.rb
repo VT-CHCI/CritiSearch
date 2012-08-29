@@ -95,7 +95,11 @@ class Ability
 
       can :create, Person
       can :manage, Person do |p|
-        p.role? :teacher || p.role? :student
+        if p.role? :teacher || p.role? :student
+          true
+        else
+          false
+        end
       end
 
       can :manage, SearchItem do |search_item|
