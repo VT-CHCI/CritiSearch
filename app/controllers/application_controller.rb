@@ -1,11 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  require 'HTTParty'
+  require 'httparty'
+
+  @@last_log_fail = (DateTime.now.to_time.advance(:hours=>-1)).to_datetime
 
   def sendLog (data)
-    HTTParty.post('http://localhost:3000/interaction_logs/service', :body=>{:logs=>{"0"=>{:logType_id=>data["logType_id"], :details=>data["details"]}}, :application=>"CritiSearch"})
+    if DateTime.now - @@last_log_fail > 1/24.0
+      HTTParty.post('http://localhost:3000/interaction_logs/service', :body=>{:logs=>{"0"=>{:logType_id=>data["logType_id"], :details=>data["details"]}}, :application=>"CritiSearch"})
+    end
   rescue Errno::ECONNREFUSED
+    @@last_log_fail = DateTime.now
+    logger.debug "could not reach ixn_log"
+  rescue Timeout::Error
+    @@last_log_fail = DateTime.now
     logger.debug "could not reach ixn_log"
   end 
 
