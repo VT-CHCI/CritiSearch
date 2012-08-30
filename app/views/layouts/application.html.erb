@@ -578,5 +578,12 @@
 <div id="main">
   <%= yield %>
 </div>
+<div>
+  <% if person_signed_in? %>
+    <span id="current_person_id"><%= current_person.id %></span>
+  <% elsif cookies[:last_person_id] %>
+    <span id="last_person_id"><%= cookies[:last_person_id] %></span>
+  <% end %>
+</div>
 </body>
 </html>
