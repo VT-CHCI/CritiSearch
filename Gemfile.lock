@@ -83,6 +83,9 @@ GEM
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
+    paper_trail (2.6.3)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     pg (0.14.0)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -145,6 +148,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   nokogiri
+  paper_trail
   pg
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)

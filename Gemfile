@@ -67,5 +67,8 @@ gem 'devise'
 #use cancan for permissions
 gem 'cancan'
 
-
+# use this to post for logging
 gem 'httparty'
+
+# paper trail for auditing
+gem 'paper_trail'
