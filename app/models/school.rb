@@ -7,4 +7,6 @@ class School < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :time_zone, :presence => true
+
+  has_paper_trail
 end

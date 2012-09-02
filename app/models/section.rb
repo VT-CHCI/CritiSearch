@@ -10,6 +10,8 @@ class Section < ActiveRecord::Base
   validates :course, :presence => true
   validates :school, :presence => true
 
+  has_paper_trail
+
   def summary
     return ((self.course && self.course.name) || "<CourseName>") + " at " + ((self.school && self.school.name) || "<SchoolName>") + " by " + ((self.teacher && self.teacher.name) || "<TeacherName>")
   end

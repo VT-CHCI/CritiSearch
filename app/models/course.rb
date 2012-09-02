@@ -3,6 +3,8 @@ class Course < ActiveRecord::Base
   has_many :sections
   has_many :schools, :through => :course_offerings
 
+  has_paper_trail
+
   def school?(school)
     return !!self.schools.find_by_name(school)
   end

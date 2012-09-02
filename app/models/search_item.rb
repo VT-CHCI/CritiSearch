@@ -3,6 +3,8 @@ class SearchItem < ActiveRecord::Base
 
   before_save :ensure_unique_query
 
+  has_paper_trail
+
   # ensure that duplicate queries are not saved
   def ensure_unique_query
     search_list.search_items.each do |item|

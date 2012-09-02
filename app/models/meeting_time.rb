@@ -1,6 +1,8 @@
 class MeetingTime < ActiveRecord::Base
   belongs_to :section
 
+  has_paper_trail
+
   def all_days
     return {
       "monday" => self.monday, 

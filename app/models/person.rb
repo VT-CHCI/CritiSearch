@@ -20,6 +20,8 @@ class Person < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :id_number, :presence => true
 
+  has_paper_trail
+
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
