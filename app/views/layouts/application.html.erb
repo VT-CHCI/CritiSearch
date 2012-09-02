@@ -580,9 +580,9 @@
 </div>
 <div>
   <% if person_signed_in? %>
-    <span id="current_person_id"><%= current_person.id %></span>
+    <span id="current_person_id" class="hidden"><%= current_person.id %></span>
   <% elsif cookies[:last_person_id] %>
-    <span id="last_person_id"><%= cookies[:last_person_id] %></span>
+    <span id="last_person_id" class="hidden"><%= cookies[:last_person_id] %></span>
   <% end %>
 </div>
 </body>

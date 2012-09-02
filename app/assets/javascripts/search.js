@@ -5,6 +5,8 @@ $(document).ready(function() {
 
   var rearrangements = 0;
 
+  var logTypes = {"action":3}
+
   function enableResultEvents () {
     $('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
     clickifyResultsAndAnnotations();
@@ -42,6 +44,9 @@ $(document).ready(function() {
 
 	//when a search result is clicked: 
 	
+  function getURLForAnnotationControl(element) {
+    return element.parents(".result-div").find(".content .result-title a").attr("href");
+  }
 
   function clickifyResultsAndAnnotations () {
     $(".result-title a").click(function() {
@@ -53,11 +58,13 @@ $(document).ready(function() {
 
     $('.search .results .result-div .delete-image').click(function() {
       if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
+        sendLog([[logTypes["action"], "toggle delete: off for: " + getURLForAnnotationControl($(this))]]);
         if (--rearrangements == 0) {
           $("#rearrange").addClass("hidden");
         }
       }
       else {
+        sendLog([[logTypes["action"], "toggle delete: on for: " + getURLForAnnotationControl($(this))]]);
         if (rearrangements++ == 0) {
           $("#rearrange").removeClass("hidden"); 
         }
@@ -68,11 +75,13 @@ $(document).ready(function() {
 
     $('.search .results .result-div .check-image').click(function() {
       if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
+        sendLog([[logTypes["action"], "toggle check: off for: " + getURLForAnnotationControl($(this))]]);
         if (--rearrangements == 0) {
           $("#rearrange").addClass("hidden");
         }
       }
       else {
+        sendLog([[logTypes["action"], "toggle check: on for: " + getURLForAnnotationControl($(this))]]);
         if (rearrangements++ == 0) {
           $("#rearrange").removeClass("hidden"); 
         }
@@ -124,6 +133,7 @@ $(document).ready(function() {
 
     console.log("rearranging");
     if ($(this).text() == "CritiSORT!") {
+      sendLog([[logTypes["action"], "clicked critisort: for: " + $("#q").val()]]);
       $(this).text("Undo CritiSort");
       //constant to be added for checked
       var checkedAddend = -200;
@@ -151,6 +161,7 @@ $(document).ready(function() {
       $(window).unbind("scroll");
     }
     else {
+      sendLog([[logTypes["action"], "clicked undo critisort: for: " + $("#q").val()]]);
       $(this).text("CritiSORT!"); 
 
       var results = $(".result-div").sort(function(a,b) {

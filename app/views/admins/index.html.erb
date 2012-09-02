@@ -1,10 +1,14 @@
 <h1>Administration</h1>
 
 <ul>
-  <li><a href="/schools">Schools</a></li>
-  <li><a href="/students">Students</a></li>
-  <li><a href="/teachers">Teachers</a></li>
-  <li><a href="/courses">Courses</a></li>
-  <li><a href="/sections">Sections</a></li>
-  <li><a href="/section_assignments">Assign Students to Sections</a></li>
+	<% if current_person.role? :school_admin or current_person.role? :super_admin %>
+	  <li><a href="/schools">Schools</a></li>
+	  <li><a href="/teachers">Teachers</a></li>
+	  <li><a href="/courses">Courses</a></li>
+	  <li><a href="/sections">Sections</a></li>
+  <% end %>
+  <% if current_person.role? :teacher or current_person.role? :school_admin or current_person.role? :super_admin %>
+	  <li><a href="/students">Students</a></li>
+	  <li><a href="/section_assignments">Assign Students to Sections</a></li>
+  <% end %>
 </ul>

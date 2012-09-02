@@ -11,10 +11,13 @@ function sendLog (logInfoPairs) {
         log["person_id"] = p_id.text();
       }
     }
+    else if ($("#last_person_id").length == 1) {
+      log["unknown_user_details"] = $("#last_person_id").text();
+    }
     logs.push(log);
   }
-  $.post("http://localhost:3000/interaction_logs/service", 
-    {"logs":logs, "application":"Astronomical Proportions"}, 
+  $.post("http://astronomical-proportions.dev/interaction_logs/service", 
+    {"logs":logs, "application": "CritiSearch"}, 
     function(data, textStatus, jqXHR){
       console.log("in my callback");
       console.log(data);

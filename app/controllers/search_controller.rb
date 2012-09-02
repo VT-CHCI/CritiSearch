@@ -6,10 +6,10 @@ class SearchController < ApplicationController
   @@counter = 0
 
   def index
-    sendLog({
+    sendLog([{
       "logType_id"=> 1, 
       "details"=>"View home page"
-    })
+    }])
   end
  
   def countAndNext
@@ -24,10 +24,10 @@ class SearchController < ApplicationController
     # Extract query from GET params
     query = params[:q]
 
-    sendLog({
-      "logType_id"=> 1, 
-      "details"=>"logged from CritiSearch!"
-    })
+    sendLog([{
+      "logType_id"=> 3, 
+      "details"=>"queried: " + query
+    }])
 
     if query.nil? or query.length < 1
       redirect_to "/"

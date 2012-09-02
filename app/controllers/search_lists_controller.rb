@@ -14,6 +14,10 @@ class SearchListsController < ApplicationController
   # GET /search_lists/1.json
   def show
     @search_list = SearchList.find(params[:id])
+    sendLog([{
+      "logType_id"=> 3, 
+      "details"=>"Viewed Recent Searches"
+    }])
 
     respond_to do |format|
       format.html # show.html.erb

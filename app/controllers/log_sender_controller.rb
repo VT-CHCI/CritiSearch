@@ -1,7 +1,7 @@
 class LogSenderController < ApplicationController
   require 'net/http'
 
-  @@url = URI.parse("http://localhost:3000/interaction_logs/service")
+  @@url = URI.parse("http://astronomical-proportions.dev/interaction_logs/service")
   @@req = Net::HTTP::Post.new(@@url.path)
 
   def self.send (data)

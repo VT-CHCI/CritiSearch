@@ -7,7 +7,19 @@ class ApplicationController < ActionController::Base
 
   def sendLog (data)
     if DateTime.now - @@last_log_fail > 1/24.0
-      HTTParty.post('http://localhost:3000/interaction_logs/service', :body=>{:logs=>{"0"=>{:logType_id=>data["logType_id"], :details=>data["details"]}}, :application=>"CritiSearch"})
+      logs = {}
+      data.each_with_index do |l, i|
+        log = l
+        if person_signed_in?
+          log[:person_id] = current_person.id
+        elsif cookies[:last_user_id]
+          log[:unknown_user_details] = cookies[:last_person_id]
+        else
+          log[:unknown_user_details] = "request.remote_ip: " + request.remote_ip
+        end
+        logs[i.to_s] = log
+      end
+      HTTParty.post('http://astronomical-proportions.dev/interaction_logs/service', :body=>{:logs=>logs, :application=>"CritiSearch"})
     end
   rescue Errno::ECONNREFUSED
     @@last_log_fail = DateTime.now
