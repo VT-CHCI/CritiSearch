@@ -21,10 +21,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :roles %><br />
-    <% Role.all.each do |role| %>
-      <%= check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role), :id => "person_role_id_#{role.id}" %>
-      <%= label_tag "person[role_ids][]", role.name, :for => "person_role_id_#{role.id}" %>
+    <% if @person.roles.length == 1 %>
+      <input type="hidden" name="person[role_ids][]" value="<%=@person.roles.first.id %>"/>
+    <% else %>
+      <%= f.label :roles %><br />
+      <% Role.all.each do |role| %>
+        <%= check_box_tag "person[role_ids][]", role.id, @person.roles.include?(role), :id => "person_role_id_#{role.id}" %>
+        <%= label_tag "person[role_ids][]", role.name, :for => "person_role_id_#{role.id}" %>
+      <% end %>  
     <% end %>
   </div>
 
