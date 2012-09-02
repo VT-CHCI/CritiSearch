@@ -1,4 +1,8 @@
-<h1>New person</h1>
+<% if @person.roles.length == 1 %>
+	<h1>New <%= @person.roles.first.name %></h1>
+<% else %>
+	<h1>New person</h1>
+<% end %>
 
 <%= render 'form' %>
 
