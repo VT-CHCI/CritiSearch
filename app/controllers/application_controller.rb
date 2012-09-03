@@ -21,10 +21,7 @@ class ApplicationController < ActionController::Base
       end
       HTTParty.post('http://astronomical-proportions.dev/interaction_logs/service', :body=>{:logs=>logs, :application=>"CritiSearch"})
     end
-  rescue Errno::ECONNREFUSED
-    @@last_log_fail = DateTime.now
-    logger.debug "could not reach ixn_log"
-  rescue Timeout::Error
+  rescue Errno::ECONNREFUSED, Timeout::Error, SocketError
     @@last_log_fail = DateTime.now
     logger.debug "could not reach ixn_log"
   end 
