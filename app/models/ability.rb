@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
 
-  has_paper_trail
+  # has_paper_trail
 
   def initialize(person)
     # Define abilities for the passed in user here. For example:
