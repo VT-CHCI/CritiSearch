@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         end
         logs[i.to_s] = log
       end
-      HTTParty.post('http://astronomical-proportions.dev/interaction_logs/service', :body=>{:logs=>logs, :application=>"CritiSearch"})
+      HTTParty.post('http://test.astronomicalproportions.org/interaction_logs/service', :body=>{:logs=>logs, :application=>"CritiSearch"})
     end
   rescue Errno::ECONNREFUSED, Timeout::Error, SocketError
     @@last_log_fail = DateTime.now

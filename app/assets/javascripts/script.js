@@ -16,7 +16,7 @@ function sendLog (logInfoPairs) {
     }
     logs.push(log);
   }
-  $.post("http://astronomical-proportions.dev/interaction_logs/service", 
+  $.post("http://test.astronomicalproportions.org/interaction_logs/service", 
     {"logs":logs, "application": "CritiSearch"}, 
     function(data, textStatus, jqXHR){
       console.log("in my callback");
