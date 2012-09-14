@@ -46,7 +46,8 @@ $offWhite: #F1F1F1;
 }
 
 #right-nav-menu-wrapper {
-  width: 100%;
+  // width: 100%;
+  right: -18px;
   position: fixed;
   margin-top: 15px;
 }
