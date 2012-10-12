@@ -1,12 +1,12 @@
 super_admin:
-	name:	"SuperAdmin"
+  name:	"SuperAdmin"
 
 # such as a school tech person
 school_admin:
-	name: "SchoolAdmin"
+  name: "SchoolAdmin"
 
 teacher:
-	name: "Teacher"
+  name: "Teacher"
 
 student:
-	name: "Student"
+  name: "Student"
