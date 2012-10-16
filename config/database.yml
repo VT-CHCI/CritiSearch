@@ -26,11 +26,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: platypus_production
-  pool: 5
-  username: platypus
-  password: 1LF9qEGglbntJz0CV5rE
+  adapter: postgresql
+  database: platypus
+  username: plate
+  password: 91g~?+TlAj/$5[ki5N3Z
   host: localhost

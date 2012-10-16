@@ -16,7 +16,7 @@
         padding-bottom: 40px;
       }
     </style>
-    <%= stylesheet_link_tag "main.css" %>
+    
 
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -32,7 +32,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="#">CritiSearch</a>
+          <a class="brand" href="/">CritiSearch</a>
           <% if !on_home_page %>
             <div class="<%= search_bar_location %> dashboard">
               <%= render 'search/search_bar' %>
@@ -105,7 +105,7 @@
             <% end %>
             <!-- <h2>Left Nav</h2> -->
             <ul class="nav nav-list">
-              <li class="active"><a href="#"><i class="icon-home"></i>Home</a></li>
+              <li class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
               <li><a href="#"><i class="icon-group"></i>Ask the Audience</a></li>
               <li><a href="#"><i class="icon-columns"></i>Venn</a></li>
             </ul>
