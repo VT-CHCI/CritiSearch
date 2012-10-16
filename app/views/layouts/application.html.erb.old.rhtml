@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Searching, Simplified</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='page <%= controller.controller_name %>'>
+
+<div id="banner">
+  <div id="messages">
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span>
+  </div>
+  <div id="person_nav" class="dashboard">
+    <% if person_signed_in? %>
+      Signed in as <%= current_person.first_name %>. Not you?
+      <%= link_to "Sign out", destroy_person_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_person_registration_path %> or <%= link_to "Sign in", new_person_session_path %>.
+    <% end %>
+  </div>
+
+  
+  <div class="<%= search_bar_location %> dashboard">
+    <% if !on_home_page %>
+      <%= render 'search/search_bar' %>
+    <% end %>
+  </div>
+  
+
+  <% if person_signed_in? and not current_person.role? :student %>
+    <div id="admin" class="dashboard">
+      <%= link_to "Administer CritiSearch", admins_path %>
+    </div>
+  <% end %>
+</div>
+
+<% if !on_home_page %>
+  <a href="/"><object type="image/svg+xml" data="<%= image_path("critter-logo-text.svg") %>"></a>
+
+<% end %>
+
+<% if on_home_page %>
+  <div class="<%= search_bar_location %>">
+    <object id="logo" type="image/svg+xml" data="<%= image_path("critter-logo-text.svg") %>">
+    <%= render 'search/search_bar' %>
+  </div>
+  <center><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPress Enter to CritiSearch!</b></center>
+<% else %>
+  <div id="right-nav-menu-wrapper">
+  <div id="right-nav-menu">
+    <%= link_to "Recent Searches", @list %>
+    <br />
+      <a class="hidden" id="rearrange" href="#">CritiSORT!</a>
+  </div>
+</div>
+<% end %>
+
+
+
+
+<div id="main">
+  <%= yield %>
+</div>
+<div>
+  <% if person_signed_in? %>
+    <span id="current_person_id" class="hidden"><%= current_person.id %></span>
+  <% elsif cookies[:last_person_id] %>
+    <span id="last_person_id" class="hidden"><%= cookies[:last_person_id] %></span>
+  <% end %>
+</div>
+</body>
+</html>

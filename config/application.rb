@@ -59,5 +59,8 @@ module Platypus
 
     #http://stackoverflow.com/questions/3546289/override-devise-registrations-controller
     # paths.app.views << "app/views/devise"
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
   end
 end
