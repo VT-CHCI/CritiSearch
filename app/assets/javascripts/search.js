@@ -60,30 +60,48 @@ $(document).ready(function() {
       if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
         sendLog([[logTypes["action"], "toggle delete: off for: " + getURLForAnnotationControl($(this))]]);
         if (--rearrangements == 0) {
-          $("#rearrange").addClass("hidden");
+          $("#rearrange").addClass("disabled");
         }
       }
       else {
         sendLog([[logTypes["action"], "toggle delete: on for: " + getURLForAnnotationControl($(this))]]);
         if (rearrangements++ == 0) {
-          $("#rearrange").removeClass("hidden"); 
+          $("#rearrange").removeClass("disabled"); 
+        }
+        if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
+          sendLog([[logTypes["action"], "toggle checked: off (via delete on) for: " + getURLForAnnotationControl($(this))]]);
+          if (--rearrangements == 0) {
+            $("#rearrange").addClass("disabled");
+          }
+          $(this).parents(".result-div").find("p").removeClass(checkedClass);
+          $(this).parents(".result-div").removeClass(checkedClass);
         }
       }
       $(this).parents(".result-div").find("p").toggleClass(deletedClass);
       $(this).parents(".result-div").toggleClass(deletedClass);
+
+      
     });
 
     $('.search .results .result-div .check-image').click(function() {
       if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
         sendLog([[logTypes["action"], "toggle check: off for: " + getURLForAnnotationControl($(this))]]);
         if (--rearrangements == 0) {
-          $("#rearrange").addClass("hidden");
+          $("#rearrange").addClass("disabled");
         }
       }
       else {
         sendLog([[logTypes["action"], "toggle check: on for: " + getURLForAnnotationControl($(this))]]);
         if (rearrangements++ == 0) {
-          $("#rearrange").removeClass("hidden"); 
+          $("#rearrange").removeClass("disabled"); 
+        }
+        if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
+          sendLog([[logTypes["action"], "toggle deleted: off (via check on) for: " + getURLForAnnotationControl($(this))]]);
+          if (--rearrangements == 0) {
+            $("#rearrange").addClass("disabled");
+          }
+          $(this).parents(".result-div").find("p").removeClass(deletedClass);
+          $(this).parents(".result-div").removeClass(deletedClass);
         }
       }
       $(this).parents(".result-div").find("p").toggleClass(checkedClass);
@@ -127,14 +145,25 @@ $(document).ready(function() {
     $(this).hide();
   });
 
+  function critisort () {
+    
+  }
+
+  function originalSort(){
+    
+  }
+
   $("#rearrange").click(function(){
+  // $("input#critisort_switch").click(function(){
     //supposedly we want the checked items, then the unmodified items, then the items with check and x
     //then the items with x (after rearrangement)
 
-    console.log("rearranging");
-    if ($(this).text() == "CritiSORT!") {
+    // console.log("rearranging");
+
+    // if ($(this).text() == "CritiSORT!") {
+      console.log("critisort");
       sendLog([[logTypes["action"], "clicked critisort: for: " + $("#q").val()]]);
-      $(this).text("Undo CritiSort");
+      $(this).text("CritiSort Again!");
       //constant to be added for checked
       var checkedAddend = -200;
 
@@ -159,11 +188,21 @@ $(document).ready(function() {
 
       //turn off load more on scroll
       $(window).unbind("scroll");
-    }
-    else {
-      sendLog([[logTypes["action"], "clicked undo critisort: for: " + $("#q").val()]]);
-      $(this).text("CritiSORT!"); 
+      $("#originalSort").removeClass("disabled");
+      $("#rearrange").addClass("disabled");
+    // }
+    // else {
+    //   originalSort($(this));
+    // }
+  });
 
+  $("#originalSort").click(function(){
+    console.log("original sort");
+    sendLog([[logTypes["action"], "clicked undo critisort: for: " + $("#q").val()]]);
+      // $(this).text("CritiSORT!"); 
+      $("#rearrange").text("CritiSORT!");
+      $("#originalSort").addClass("disabled");
+      $("#rearrange").removeClass("disabled");
       var results = $(".result-div").sort(function(a,b) {
         return $(a).attr("original-order") - $(b).attr("original-order");
       });
@@ -173,9 +212,10 @@ $(document).ready(function() {
       $(".ajax-load-wrapper").before(results);
 
       enableScroll();
-
-    }
   });
+
+  // $("input#critisort_switch").bind("critisort", critisort);
+  // $("input#critisort_switch").bind("originalSort", originalSort);
 
   enableResultEvents();
 
