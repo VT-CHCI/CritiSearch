@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/vwall/compass-twitter-bootstrap.git
+  revision: c2f771097a2b378b7e98e71142d54f19f47c6abe
+  ref: c2f771097a2b378b7e98e71142d54f19f47c6abe
+  specs:
+    compass_twitter_bootstrap (2.0.3)
+      compass
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +46,7 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    chunky_png (1.2.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -45,6 +54,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -53,6 +68,9 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    font-awesome-rails (0.4.1)
+      railties (~> 3.1)
+    fssm (0.2.9)
     gsearch-parser (0.3.8)
       nokogiri (~> 1.5.2)
     highline (1.6.14)
@@ -142,7 +160,10 @@ DEPENDENCIES
   cancan
   capistrano
   coffee-rails (~> 3.2.1)
+  compass-rails
+  compass_twitter_bootstrap!
   devise
+  font-awesome-rails
   gsearch-parser (~> 0.3.8)
   httparty
   jquery-rails
