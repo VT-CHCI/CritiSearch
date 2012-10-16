@@ -10,7 +10,7 @@ gem 'rails', '3.2.2'
 # gem 'sqlite3'
 gem 'pg' #for heroku
 
-gem 'compass_twitter_bootstrap', :git => 'git://github.com/vwall/compass-twitter-bootstrap.git', :ref => "c2f771097a2b378b7e98e71142d54f19f47c6abe"
+gem 'compass_twitter_bootstrap'
 gem 'compass-rails'
 gem 'font-awesome-rails'
 
