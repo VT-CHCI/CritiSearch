@@ -79,3 +79,5 @@ gem 'httparty'
 
 # paper trail for auditing
 gem 'paper_trail'
+
+gem 'rails-backbone'

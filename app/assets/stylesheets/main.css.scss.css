@@ -1,0 +1,31 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.header-message {
+	padding: 10px 0;
+}
+
+.navbar form {
+	margin: 0 ! important;
+}
+
+.nav li a {
+	text-indent: -18px;
+	padding-left: 42px ! important;
+}
+
+.sidenav {
+	width: 171px;
+}
+
+
+
+
+
+
+
+
+
