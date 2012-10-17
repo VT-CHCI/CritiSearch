@@ -154,6 +154,7 @@ $(document).ready(function() {
   }
 
   $("#rearrange").click(function(){
+    if (! $(this).hasClass("disabled")) {
   // $("input#critisort_switch").click(function(){
     //supposedly we want the checked items, then the unmodified items, then the items with check and x
     //then the items with x (after rearrangement)
@@ -194,9 +195,11 @@ $(document).ready(function() {
     // else {
     //   originalSort($(this));
     // }
+    }
   });
 
   $("#originalSort").click(function(){
+    if (! $(this).hasClass("disabled")) {
     console.log("original sort");
     sendLog([[logTypes["action"], "clicked undo critisort: for: " + $("#q").val()]]);
       // $(this).text("CritiSORT!"); 
@@ -212,6 +215,7 @@ $(document).ready(function() {
       $(".ajax-load-wrapper").before(results);
 
       enableScroll();
+    }
   });
 
   // $("input#critisort_switch").bind("critisort", critisort);
