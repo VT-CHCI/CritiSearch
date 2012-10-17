@@ -99,7 +99,7 @@
 
         <!-- left sidebar -->
         <div class="span2">
-          <div class="sidenav" data-spy="affix-top">
+          <div class="sidenav" data-spy="affix">
             <% if !on_home_page %>
               <object width="171" height="90" type="image/svg+xml" id="logo" data="<%= image_path("critter-logo-text-small.svg") %>"></object>
             <% end %>
@@ -127,8 +127,9 @@
         <!-- /main content -->
 
         <!-- Right sidebar -->
-        <div class="span2" data-spy="affix-top">
-          <ul class="nav nav-tabs nav-stacked sidenav" data-spy="affix-top">
+        <div class="span2">
+          <div data-spy="affix">
+          <ul class="nav nav-tabs nav-stacked sidenav">
             <% if person_signed_in? %>
               <li>
                 <%= link_to destroy_person_session_path, :method => :delete  do %>
@@ -162,8 +163,9 @@
             <% end %>
           </ul>
 
-          <a href="#" id="rearrange" class="btn btn-large btn-primary disabled">CritiSORT!</a><br />
+          <a href="#" id="rearrange" class="btn btn-large btn-primary disabled">CritiSORT!</a><br /><br />
           <a href="#" id="originalSort" class="btn btn-large btn-primary disabled">Original Sort</a>
+        </div>
         </div> <!-- / right sidebar -->
       </div> <!-- /row -->
 

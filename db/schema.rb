@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902161941) do
+ActiveRecord::Schema.define(:version => 20121016231109) do
 
   create_table "admin_assignments", :force => true do |t|
     t.integer  "person_id"
@@ -88,6 +88,23 @@ ActiveRecord::Schema.define(:version => 20120902161941) do
 
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
+
+  create_table "rating_values", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "search_item_id"
+    t.string   "url"
+    t.integer  "rating_value_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "ratings", ["rating_value_id"], :name => "index_ratings_on_rating_value_id"
+  add_index "ratings", ["search_item_id"], :name => "index_ratings_on_search_item_id"
 
   create_table "role_assignments", :force => true do |t|
     t.integer  "person_id"

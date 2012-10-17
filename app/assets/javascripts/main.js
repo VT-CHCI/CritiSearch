@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	$(".alert").alert();
-	$(".sidenav").affix();
 
 	// $('#rearrange').click(function(){
  //    if ($(this).is(":checked")) { //we just checked the box

@@ -2,6 +2,10 @@ Platypus::Application.routes.draw do
 
   
 
+  resources :ratings
+
+  resources :rating_values
+
   resources :admins
 
   resources :course_offerings

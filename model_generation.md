@@ -40,3 +40,19 @@
 
 ### Scaffold Generation statement ###
     rails generate scaffold MeetingTime description:string monday:boolean tuesday:boolean wednesday:boolean thursday:boolean friday:boolean saturday:boolean sunday:boolean period:string startTime:time endTime:time section:belongs_to startDate:date endDate:date
+
+## RatingValue ##
+### Attributes ###
+* Name
+
+### Scaffold Generation statement ###
+    rails generate scaffold RatingValue name:string
+
+## Rating ##
+### Attributes ###
+* Search_Item_ID
+* URL
+* Value
+
+### Scaffold Generation statement ###
+    rails generate scaffold Rating search_item:belongs_to url:string rating_value:belongs_to 
