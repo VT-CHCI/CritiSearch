@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Search item:</b>
+  <%= @rating.search_item %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @rating.url %>
+</p>
+
+<p>
+  <b>Rating value:</b>
+  <%= @rating.rating_value %>
+</p>
+
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>

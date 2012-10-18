@@ -1,0 +1,23 @@
+<h1>Listing rating_values</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rating_values.each do |rating_value| %>
+  <tr>
+    <td><%= rating_value.name %></td>
+    <td><%= link_to 'Show', rating_value %></td>
+    <td><%= link_to 'Edit', edit_rating_value_path(rating_value) %></td>
+    <td><%= link_to 'Destroy', rating_value, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rating value', new_rating_value_path %>

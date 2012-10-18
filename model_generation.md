@@ -55,4 +55,6 @@
 * Value
 
 ### Scaffold Generation statement ###
-    rails generate scaffold Rating search_item:belongs_to url:string rating_value:belongs_to 
+    rails generate scaffold Rating search_item:belongs_to url:string rating_value:belongs_to
+#### Backbone Scaffolding ####
+    rails g backbone:scaffold Rating search_item:belongs_to url:string rating_value:belongs_to

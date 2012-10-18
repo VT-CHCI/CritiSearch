@@ -1,0 +1,9 @@
+<div id="ratings"></div>
+
+<script type="text/javascript">
+  $(function() {
+    // Blog is the app name
+    window.router = new Platypus.Routers.RatingsRouter({ratings: <%= @ratings.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>

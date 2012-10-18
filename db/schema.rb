@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121016231109) do
+ActiveRecord::Schema.define(:version => 20121017030039) do
 
   create_table "admin_assignments", :force => true do |t|
     t.integer  "person_id"
