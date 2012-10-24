@@ -59,12 +59,34 @@ $(document).ready(function() {
     $('.search .results .result-div .delete-image').click(function() {
       if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
         sendLog([[logTypes["action"], "toggle delete: off for: " + getURLForAnnotationControl($(this))]]);
+        $.post("/ajaxratings", 
+          {
+            url: getURLForAnnotationControl($(this)),
+            query: $("#q").val(),
+            person: $("#current_person_id").text(),
+            deletion: 'true'
+          }, 
+          function() {
+            console.log("callback");
+          }
+        );
         if (--rearrangements == 0) {
           $("#rearrange").addClass("disabled");
         }
       }
       else {
         sendLog([[logTypes["action"], "toggle delete: on for: " + getURLForAnnotationControl($(this))]]);
+        $.post("/ajaxratings", 
+          {
+            url: getURLForAnnotationControl($(this)),
+            query: $("#q").val(),
+            person: $("#current_person_id").text(),
+            ratingValue: 'down'
+          }, 
+          function() {
+            console.log("callback");
+          }
+        );
         if (rearrangements++ == 0) {
           $("#rearrange").removeClass("disabled"); 
         }
@@ -86,12 +108,35 @@ $(document).ready(function() {
     $('.search .results .result-div .check-image').click(function() {
       if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
         sendLog([[logTypes["action"], "toggle check: off for: " + getURLForAnnotationControl($(this))]]);
+        $.post("/ajaxratings", 
+          {
+            url: getURLForAnnotationControl($(this)),
+            query: $("#q").val(),
+            person: $("#current_person_id").text(),
+            deletion: 'true'
+          }, 
+          function() {
+            console.log("callback");
+          }
+        );
         if (--rearrangements == 0) {
           $("#rearrange").addClass("disabled");
         }
       }
       else {
         sendLog([[logTypes["action"], "toggle check: on for: " + getURLForAnnotationControl($(this))]]);
+        console.log("about to post to ajaxratings");
+        $.post("/ajaxratings", 
+          {
+            url: getURLForAnnotationControl($(this)),
+            query: $("#q").val(),
+            person: $("#current_person_id").text(),
+            ratingValue: 'up'
+          }, 
+          function() {
+            console.log("callback");
+          }
+        );
         if (rearrangements++ == 0) {
           $("#rearrange").removeClass("disabled"); 
         }
