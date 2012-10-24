@@ -14,10 +14,5 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require engage.itoggle
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require backbone/platypus
 //= require_tree .
 //= require bootstrap-all
