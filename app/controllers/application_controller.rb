@@ -35,7 +35,15 @@ class ApplicationController < ActionController::Base
       logger.debug "current_search_list"
       s = SearchList.find(session[:search_list_id])
       if person_signed_in?
+        if s.person_id? && s.person_id != current_person.id
+          #there's already a person
+          session.delete(:search_list_id)
+          list = SearchList.create
+          session[:search_list_id] = list.id
+          s = SearchList.find(session[:search_list_id])
+        end
         s.person = current_person
+        s.save
         logger.debug current_person
         logger.debug s.person
         logger.debug "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
