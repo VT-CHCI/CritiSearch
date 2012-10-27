@@ -7,6 +7,9 @@ $(document).ready(function() {
 
   var logTypes = {"action":3}
 
+  $("#venn-link").attr("href", "/venn/"+$("#q").val());
+  $("#ask-audience").attr("href", "/askthem/"+$("#q").val());
+
   function enableResultEvents () {
     $('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
     clickifyResultsAndAnnotations();

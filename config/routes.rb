@@ -43,6 +43,9 @@ Platypus::Application.routes.draw do
   get "search/query"
   get "search/ajax"
 
+  match "/venn/:query" => "venn#show"
+  match "/askthem/:query" => "ask_audience#show"
+
   resources :search_items
 
   resources :search_lists
