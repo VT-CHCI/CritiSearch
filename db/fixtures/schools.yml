@@ -1,0 +1,19 @@
+Holman:
+  id: 1
+  name: "Holman Middle School"
+  time_zone: "Eastern Time (US & Canada)"
+
+Fairfield:
+  id: 2
+  name: "Fairfield Middle School"
+  time_zone: "Eastern Time (US & Canada)"
+
+Otherone:
+  id: 3
+  name: "Otherone Middle School"
+  time_zone: "Eastern Time (US & Canada)"
+
+VirginiaTech:
+  id: 4
+  name: "Virginia Tech"
+  time_zone: "Eastern Time (US & Canada)"

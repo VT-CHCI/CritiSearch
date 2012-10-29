@@ -1,0 +1,56 @@
+Deborah:
+  id: 1
+  first_name: "Deborah"
+  encrypted_password: "$2a$10$1HJxPDGllmUVzvXq1QYY7OBYEeo7O.HBSsc.0Tkyu0fwUKY90knjm"
+  id_number: 1
+  email: "1"
+
+Steve:
+  id: 2
+  first_name: "Steve"
+  encrypted_password: "$2a$10$hvt1KboLlHuknftzkHtZ1eEveRfmMZnnAUvVs1C3aGm.dg4SWDoAm"
+  id_number: 2
+  email: "2"
+
+Michael:
+  id: 3
+  first_name: "Michael"
+  encrypted_password: "$2a$10$Q9pq8MEMAkZmAPzpbmON4eOg.gAFkguiN4EAXdd5UWJU9td3AWb/u"
+  id_number: 3
+  email: "3"
+
+Bobby:
+  id: 4
+  first_name: "Bobby"
+  encrypted_password: "$2a$10$cM7LtEhDRfX.TShbep.xG.PKEO1G2hGryCJUsbDO82nJe8KiUQUmK"
+  id_number: 4
+  email: "4"
+
+Stacy:
+  id: 5
+  first_name: "Stacy"
+  encrypted_password: "$2a$10$urM/NzsRwv7SNU5sdBUwJ.2UOJWbN/u7CcVJIsKoihWF0F6VF27cW"
+  id_number: 5
+  email: "5"
+
+Joon:
+  id: 6
+  first_name: "Joon"
+  encrypted_password: "$2a$10$AqQQpqNjtkNM3xWkLqdXC.JbtYUe6/.LADioCSMmiVFO/4qbss1yG"
+  id_number: 6
+  email: "6"
+
+Sammy:
+  id: 7
+  first_name: "Sammy"
+  encrypted_password: "$2a$10$0KMn0UOun3EuvfTc00ut6OLhNJjB4vHLutTxX0YG5xpZXrNcJI6Vu"
+  id_number: 7
+  email: "7"
+
+José:
+  id: 8
+  first_name: "José"
+  encrypted_password: "$2a$10$YEqOCUWVTJsrbAVWuPjju.PbKMWZlgURBWMwSnzg72dELC7rqgdyW"
+  id_number: 8
+  email: "8"
+

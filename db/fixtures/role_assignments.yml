@@ -1,0 +1,31 @@
+deborah-teacher:
+  person_id: 1
+  role_id: 3
+
+steve-teacher:
+  person_id: 2
+  role_id: 3
+
+else-student1:
+  person_id: 3
+  role_id: 4
+
+else-student2:
+  person_id: 4
+  role_id: 4
+
+else-student3:
+  person_id: 5
+  role_id: 4
+
+else-student4:
+  person_id: 6
+  role_id: 4
+
+else-student5:
+  person_id: 7
+  role_id: 4
+
+else-student6:
+  person_id: 8
+  role_id: 4

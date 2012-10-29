@@ -1,0 +1,144 @@
+r1:
+  id: 1
+  search_item_id: 1
+  url: "http://en.wikipedia.org/wiki/Cheese"
+  rating_value_id: 1
+
+r2:
+  id: 2
+  search_item_id: 1
+  url: "http://www.cheese.com/"
+  rating_value_id: 1
+
+r3:
+  id: 3
+  search_item_id: 1
+  url: "http://projects.gnome.org/cheese/"
+  rating_value_id: 2
+
+r4:
+  id: 4
+  search_item_id: 2
+  url: "http://www.emilystrange.com/"
+  rating_value_id: 2
+
+r5:
+  id: 5
+  search_item_id: 2
+  url: "http://en.wikipedia.org/wiki/Emily"
+  rating_value_id: 1
+
+r6:
+  id: 6
+  search_item_id: 3
+  url: "http://en.wikipedia.org/wiki/Steak_au_poivre"
+  rating_value_id: 1
+
+r7:
+  id: 7
+  search_item_id: 3
+  url: "http://en.wiktionary.org/wiki/poivre"
+  rating_value_id: 1
+
+r8:
+  id: 8
+  search_item_id: 3
+  url: "http://en.wikipedia.org/wiki/Pierre_Poivre"
+  rating_value_id: 2
+
+r9:
+  id: 9
+  search_item_id: 4
+  url: "http://www.cs.cmu.edu/~CompThink/papers/Wing06.pdf"
+  rating_value_id: 1
+
+r10:
+  id: 10
+  search_item_id: 4
+  url: "http://www.cs.cmu.edu/~CompThink/"
+  rating_value_id: 1
+
+r11:
+  id: 11
+  search_item_id: 4
+  url: "http://en.wikipedia.org/wiki/Computational_thinking"
+  rating_value_id: 1
+
+r12:
+  id: 12
+  search_item_id: 7
+  url: "http://en.wikipedia.org/wiki/Grenoble"
+  rating_value_id: 1
+
+r13:
+  id: 13
+  search_item_id: 7
+  url: "http://wikitravel.org/en/Grenoble"
+  rating_value_id: 2
+
+r14:
+  id: 14
+  search_item_id: 10
+  url: "http://www.dressupgames.com/fashion/design.html"
+  rating_value_id: 2
+
+r15:
+  id: 15
+  search_item_id: 10
+  url: "http://www.colordesigngames.com/"
+  rating_value_id: 2
+
+r16:
+  id: 16
+  search_item_id: 10
+  url: "http://www.azdressup.com/games/fashion-design-games.html"
+  rating_value_id: 2
+
+r17:
+  id: 17
+  search_item_id: 14
+  url: "http://www.nbpts.org/"
+  rating_value_id: 1
+
+r18:
+  id: 18
+  search_item_id: 14
+  url: "http://www.nbme.org/"
+  rating_value_id: 2
+
+r19:
+  id: 19
+  search_item_id: 14
+  url: "http://www.nbme.org/"
+  rating_value_id: 2
+
+r20:
+  id: 20
+  search_item_id: 14
+  url: "http://www.optometry.org/"
+  rating_value_id: 2
+
+r21:
+  id: 21
+  search_item_id: 16
+  url: "http://en.wikipedia.org/wiki/Tomatillo"
+  rating_value_id: 1
+
+r22:
+  id: 22
+  search_item_id: 16
+  url: "http://whatscookingamerica.net/tomatillos.htm"
+  rating_value_id: 1
+
+r23:
+  id: 23
+  search_item_id: 16
+  url: "http://www.simplyrecipes.com/tag/tomatillos"
+  rating_value_id: 1
+
+r24:
+  id: 24
+  search_item_id: 16
+  url: "http://www.mexchester.com/"
+  rating_value_id: 2
+

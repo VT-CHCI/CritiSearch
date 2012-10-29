@@ -1,0 +1,19 @@
+Earth-Science:
+  id: 1
+  name: "Earth Science"
+
+Math:
+  id: 2
+  name: "Algebra 1"
+
+Social-Studies:
+  id: 3
+  name: "Social Studies"
+
+Language-Arts:
+  id: 4
+  name: "Language Arts"
+
+CompThink:
+  id: 5
+  name: "Computational Thinking"

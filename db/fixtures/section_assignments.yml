@@ -1,0 +1,29 @@
+compthink_student_1:
+  id: 1
+  person_id: 3
+  section_id: 5
+
+compthink_student_2:
+  id: 2
+  person_id: 4
+  section_id: 5
+
+compthink_student_3:
+  id: 3
+  person_id: 5
+  section_id: 5
+
+compthink_student_4:
+  id: 4
+  person_id: 6
+  section_id: 5
+
+compthink_student_5:
+  id: 5
+  person_id: 7
+  section_id: 5
+
+compthink_student_6:
+  id: 6
+  person_id: 8
+  section_id: 5
