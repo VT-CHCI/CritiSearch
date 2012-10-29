@@ -51,10 +51,8 @@ $(document).ready(function() {
     return element.parents(".result-div").find(".content .result-title a").attr("href");
   }
 
-  function clickifyResultsAndAnnotations () {
-    $(".result-title a").click(function() {
-      console.log("clicked: " + $(this).text());
-    });
+  function clickifyResultsAndAnnotations () {  
+    addFollow();
     
     $('.search .results .result-div .delete-image').unbind('click');
     $('.search .results .result-div .check-image').unbind('click');
@@ -170,6 +168,22 @@ $(document).ready(function() {
 
   enableScroll();
 
+  function addFollow() {
+    $(".result-title a").click(function(){
+      // console.log($(this).attr("href"));
+      $.post("/addfollow", 
+        {
+          url: $(this).attr("href"),
+          query: $("#q").val(),
+          person: $("#current_person_id").text()
+        }, 
+        function() {
+          console.log("callback");
+        }
+      );
+    });
+  }
+
   // Function that handles the ajax response to load more results
   function loadMoreResults (data) {
     $('.next-page').remove();
@@ -178,6 +192,7 @@ $(document).ready(function() {
     addtlResults.appendTo('.results');
     // addtlResults.mouseenter(searchResultMouseEnter);
     enableResultEvents();
+    addFollow();
   }
 
   // TODO: Make an Ajax request for more results if there are fewer than 5 results currenly shown

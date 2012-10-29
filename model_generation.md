@@ -58,3 +58,40 @@
     rails generate scaffold Rating search_item:belongs_to url:string rating_value:belongs_to
 #### Backbone Scaffolding ####
     rails g backbone:scaffold Rating search_item:belongs_to url:string rating_value:belongs_to
+
+
+## Follow ##
+### Attributes ###
+* Search_Item_ID
+* URL
+* the rails create date will tell us when the person went to this link
+
+### Scaffold Generation statement ###
+    rails generate scaffold Follow search_item:belongs_to url:string
+
+## Seeding ##
+### Sections ###
+Science:
+  id: 1
+  course_id: 1
+  school_id: 
+  teacher_id: 
+
+Math:
+  id: 2
+  course_id: 2
+  school_id: 
+  teacher_id: 
+
+Social-Studies:
+  id: 3
+  course_id: 3
+  school_id: 
+  teacher_id: 
+
+Language-Arts:
+  id: 4
+  course_id: 4
+  school_id: 
+  teacher_id: 
+
