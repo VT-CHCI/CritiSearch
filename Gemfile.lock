@@ -66,6 +66,9 @@ GEM
     font-awesome-rails (0.4.1)
       railties (~> 3.1)
     fssm (0.2.9)
+    gon (4.0.1)
+      actionpack (>= 2.3.0)
+      json
     gsearch-parser (0.3.8)
       nokogiri (~> 1.5.2)
     highline (1.6.15)
@@ -166,6 +169,7 @@ DEPENDENCIES
   compass_twitter_bootstrap
   devise
   font-awesome-rails
+  gon
   gsearch-parser (~> 0.3.8)
   httparty
   jquery-rails

@@ -53,6 +53,8 @@ $(document).ready(function() {
 
   function clickifyResultsAndAnnotations () {  
     addFollow();
+
+    applyRatings();
     
     $('.search .results .result-div .delete-image').unbind('click');
     $('.search .results .result-div .check-image').unbind('click');
@@ -181,6 +183,22 @@ $(document).ready(function() {
           console.log("callback");
         }
       );
+    });
+  }
+
+  function applyRatings() {
+    // console.log("applyRatings");
+    // console.log(gon.ratings);
+    $.each(gon.ratings, function(url, rating){
+      var result = $('a[href="'+url+'"]').parents(".result-div").find("p");
+      if (rating == "up") {
+        result.addClass(checkedClass);
+      }
+      else {
+        result.addClass(deletedClass);
+      }
+      rearrangements++;
+      $("#rearrange").removeClass("disabled");
     });
   }
 

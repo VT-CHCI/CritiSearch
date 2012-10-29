@@ -79,3 +79,6 @@ gem 'httparty'
 
 # paper trail for auditing
 gem 'paper_trail'
+
+#gon to access ruby data in js
+gem 'gon'

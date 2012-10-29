@@ -40,6 +40,12 @@ class SearchController < ApplicationController
       # Get the current list associated with this session
       @list = current_search_list
 
+      #need to get DB ratings for this person's search
+      if person_signed_in?
+        gon.ratings = current_person.ratings(query)
+      end
+
+
       # Create a new search_item attached to this list from the query
       search_item = @list.search_items.build(query: query)
 

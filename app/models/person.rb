@@ -53,4 +53,17 @@ class Person < ActiveRecord::Base
     return people
   end
 
+  def ratings (query)
+    lists = SearchList.where(:person_id=>self.id)
+    list_ids = lists.collect{|x| x.id}
+    items = SearchItem.where(:search_list_id => list_ids, :query=>query)
+    item_ids = items.collect{|x| x.id}
+    ratings = Rating.where(:search_item_id => item_ids)
+    ratingsHash = Hash.new
+    ratings.each do |rating|
+      ratingsHash[rating.url] = rating.rating_value.name
+    end
+    return ratingsHash
+  end
+
 end
