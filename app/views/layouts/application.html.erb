@@ -76,13 +76,13 @@
         <% if flash[:notice] %>
           <div class="alert alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <span class="notice"><%= notice %></span>
+            <%= notice %>
           </div>
         <% end %>
         <% if flash[:alert] %>
           <div class="alert alert-error">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <span class="alert"><%= alert %></span>
+            <%= alert %>
           </div>
         <% end %>
       </div>
@@ -150,7 +150,12 @@
             <% else %>
               <li>
                 <%= link_to new_person_session_path do %>
-                <i class="icon-user"></i> Sign in
+                  <i class="icon-user"></i> Sign in
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_person_registration_path do %>
+                  <i class="icon-plus-sign"></i> Sign up
                 <% end %>
               </li>
             <% end %>
