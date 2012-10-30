@@ -69,6 +69,16 @@
 ### Scaffold Generation statement ###
     rails generate scaffold Follow search_item:belongs_to url:string
 
+
+## Reflection ##
+### Attributes ###
+* Search_Item_ID
+* reflection
+* the rails create date will tell us when the person went to this link
+
+### Scaffold Generation statement ###
+    rails generate scaffold Reflection search_item:belongs_to reflection:text --no-stylesheets
+
 ## Seeding ##
 ### Sections ###
 Science:

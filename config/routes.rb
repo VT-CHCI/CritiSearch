@@ -2,6 +2,8 @@ Platypus::Application.routes.draw do
 
   
 
+  resources :reflections
+
   resources :follows
 
   resources :ratings
@@ -65,6 +67,7 @@ Platypus::Application.routes.draw do
 
   match '/ajaxratings' => 'ratings_service#rate', :via => :post
   match '/addfollow' => 'follow_service#create', :via => :post
+  match "/reflection" => "reflection_service#create", :via => :post
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

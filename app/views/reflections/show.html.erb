@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Search item:</b>
+  <%= @reflection.search_item %>
+</p>
+
+<p>
+  <b>Reflection:</b>
+  <%= @reflection.reflection %>
+</p>
+
+
+<%= link_to 'Edit', edit_reflection_path(@reflection) %> |
+<%= link_to 'Back', reflections_path %>
