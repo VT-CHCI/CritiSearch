@@ -68,25 +68,15 @@ $(document).ready(function() {
       // check if it's url is in the hash
       var url = elem.find(".result-title a").attr("href");
       if (gon.audience[url]) {
-        // if it is put the rating number in place of the appropriate icon
         if (gon.audience[url]["up"]) {
-          var div = elem.find(".controls .check-image");//replaceWith('<span>' + val + '</span>');
+          var div = elem.find(".controls .check-image");
             div.text(gon.audience[url]["up"]);
         }
 
         if (gon.audience[url]["down"]) {
-          // elem.find(".controls .delete-image").replaceWith('<span>' + val + '</span>');
-            var div = elem.find(".controls .check-image");//replaceWith('<span>' + val + '</span>');
+            var div = elem.find(".controls .check-image");
             div.text(gon.audience[url]["down"]);
         }
-        // $.each(gon.audience[url], function(idx, val){
-        //   if (idx == "up") {
-            
-        //   }
-        //   else {
-            
-        //   }
-        // });
       }
 
     });
