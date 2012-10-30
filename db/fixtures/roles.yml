@@ -1,6 +1,6 @@
 super_admin:
   id: 1
-  name:	"SuperAdmin"
+  name: "SuperAdmin"
 
 school_admin:
   id: 2
