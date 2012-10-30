@@ -111,7 +111,7 @@
                 <li id="home-link-li" class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
               <% end %>
               <!-- <li id="search-link-li"><a href="/search"><i class="icon-search"></i>Search</a></li> -->
-              <% if !on_home_page %>
+              <% if !on_home_page and person_signed_in? %>
                 <li id="ask-audience-li"><a id="ask-audience" href="#"><i class="icon-group"></i>Ask the Audience</a></li>
                 <li><a id="venn-link" href="#"><i class="icon-columns"></i>Venn</a></li>
               <% end %>
