@@ -15,4 +15,3 @@
 //= require jquery_ujs
 //= require engage.itoggle
 //= require_tree .
-//= require bootstrap-all

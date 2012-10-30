@@ -24,14 +24,13 @@ class SearchController < ApplicationController
     # Extract query from GET params
     query = params[:q]
 
-    sendLog([{
-      "logType_id"=> 3, 
-      "details"=>"queried: " + query
-    }])
-
     if query.nil? or query.length < 1
       redirect_to "/"
     else
+      sendLog([{
+        "logType_id"=> 3, 
+        "details"=>"queried: " + query
+      }])
 
       # Initalize variables to be used by the View
       @webSearch = GSearchParser.webSearch(query)
@@ -42,7 +41,7 @@ class SearchController < ApplicationController
 
       #need to get DB ratings for this person's search
       if person_signed_in?
-        gon.ratings = current_person.ratings(query)
+        gon.ratings = current_person.ratingsHash(query)
       end
 
 

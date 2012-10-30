@@ -7,8 +7,93 @@ $(document).ready(function() {
 
   var logTypes = {"action":3}
 
+  $("#search-link-li").addClass("active");
+  $("#home-link-li").removeClass("active");
+
   $("#venn-link").attr("href", "/venn/"+$("#q").val());
-  $("#ask-audience").attr("href", "/askthem/"+$("#q").val());
+
+  $("#ask-audience-prompt").modal({
+    backdrop: "static",
+    show: false
+  });
+
+  $("#student-reflection").val("");
+
+  $("#cancel-ask-audience").click(function(){
+    $("#ask-audience-prompt").modal('hide');
+  });
+
+  $("#submit-reflection").click(function(){
+    if (reflectionValidates()) {
+      $.post("/reflection", 
+        {
+          query: $("#q").val(),
+          person: $("#current_person_id").text(),
+          reflection: $("#student-reflection").val()
+        }, 
+        function() {
+          $("#ask-audience-li").addClass("active");
+          replaceRatingControlsWithAggregates();
+        }
+      );
+      $("#ask-audience-prompt").modal('hide');
+    }
+    else {
+      $("#reflection-validation-errors").removeClass("hidden");
+    }
+  });
+
+  function reflectionValidates() {
+    return $("#student-reflection").val().length > 10;
+  }
+  function replaceRatingControlsWithAggregates () {
+    $(".result-div").each(function(){
+      var elem = $(this);
+      // check if it's url is in the hash
+      var url = elem.find(".result-title a").attr("href");
+      if (gon.audience[url]) {
+        // if it is put the rating number in place of the appropriate icon
+        $.each(gon.audience[url], function(idx, val){
+          if (idx == "up") {
+            elem.find(".controls .check-image").replaceWith('<span>' + val + '</span>');
+          }
+          else {
+            elem.find(".controls .delete-image").replaceWith('<span>' + val + '</span>');
+          }
+        });
+      }
+      else {
+        elem.find(".controls .check-image").replaceWith('<span>0</span>');
+        elem.find(".controls .delete-image").replaceWith('<span>0</span>');
+      }
+
+      
+
+      //if it's not just empty the icon
+
+    });
+  }
+
+  $("#ask-audience").click(toggleAsk);
+
+  $("#ask-audience-prompt").on('show', function(e) {
+    var modal = $(this);
+
+    modal.css('margin-top', (modal.outerHeight() / 2) * -1)
+      .css('margin-left', (modal.outerWidth() / 2) * -1);
+
+    return this;
+  });
+
+  function toggleAsk () {
+    if ($("#ask-audience-li").hasClass("active")) {
+      // $("#ask-audience-li").removeClass("active");
+    }
+    else {
+      $("#ask-audience-prompt").modal('show');
+      // $("#ask-audience-li").addClass("active");
+    }
+  }
 
   function enableResultEvents () {
     $('.search .results .result-div .content').mouseenter(searchResultMouseEnter);
@@ -51,6 +136,10 @@ $(document).ready(function() {
     return element.parents(".result-div").find(".content .result-title a").attr("href");
   }
 
+  function getContentForAnnotationControl(element) {
+    return element.parents(".result-div").find(".content").html();
+  }
+
   function clickifyResultsAndAnnotations () {  
     addFollow();
 
@@ -84,7 +173,8 @@ $(document).ready(function() {
             url: getURLForAnnotationControl($(this)),
             query: $("#q").val(),
             person: $("#current_person_id").text(),
-            ratingValue: 'down'
+            ratingValue: 'down',
+            resultContent: getContentForAnnotationControl($(this))
           }, 
           function() {
             console.log("callback");
@@ -134,7 +224,8 @@ $(document).ready(function() {
             url: getURLForAnnotationControl($(this)),
             query: $("#q").val(),
             person: $("#current_person_id").text(),
-            ratingValue: 'up'
+            ratingValue: 'up',
+            resultContent: getContentForAnnotationControl($(this))
           }, 
           function() {
             console.log("callback");
@@ -187,19 +278,22 @@ $(document).ready(function() {
   }
 
   function applyRatings() {
-    // console.log("applyRatings");
+    console.log("applyRatings");
     // console.log(gon.ratings);
-    $.each(gon.ratings, function(url, rating){
-      var result = $('a[href="'+url+'"]').parents(".result-div").find("p");
-      if (rating == "up") {
-        result.addClass(checkedClass);
-      }
-      else {
-        result.addClass(deletedClass);
-      }
-      rearrangements++;
-      $("#rearrange").removeClass("disabled");
-    });
+    if (typeof gon != 'undefined') {
+      console.log("in gon if");
+      $.each(gon.ratings, function(url, rating){
+        var result = $('a[href="'+url+'"]').parents(".result-div").find("p");
+        if (rating == "up") {
+          result.addClass(checkedClass);
+        }
+        else {
+          result.addClass(deletedClass);
+        }
+        rearrangements++;
+        $("#rearrange").removeClass("disabled");
+      });
+    }
   }
 
   // Function that handles the ajax response to load more results
