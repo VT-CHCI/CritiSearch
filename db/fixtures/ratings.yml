@@ -142,3 +142,44 @@ r24:
   url: "http://www.mexchester.com/"
   rating_value_id: 2
 
+r25:
+  id: 25
+  search_item_id: 19
+  url: "http://www.murrayscheese.com/"
+  rating_value_id: 2
+
+r26:
+  id: 26
+  search_item_id: 19
+  url: "http://www.ilovecheese.com/"
+  rating_value_id: 1
+
+r27:
+  id: 27
+  search_item_id: 19
+  url: "http://en.wikipedia.org/wiki/Cheese"
+  rating_value_id: 2
+
+r28:
+  id: 28
+  search_item_id: 19
+  url: "http://www.cheese.com/"
+  rating_value_id: 2
+
+r29:
+  id: 29
+  search_item_id: 20
+  url: "http://www.cheese.com/"
+  rating_value_id: 1
+
+r30:
+  id: 30
+  search_item_id: 20
+  url: "http://www.ilovecheese.com/"
+  rating_value_id: 1
+
+r31:
+  id: 31
+  search_item_id: 20
+  url: "http://en.wikipedia.org/wiki/Cheese"
+  rating_value_id: 1
