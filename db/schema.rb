@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028204035) do
+ActiveRecord::Schema.define(:version => 20121030002357) do
 
   create_table "admin_assignments", :force => true do |t|
     t.integer  "person_id"
@@ -110,10 +110,20 @@ ActiveRecord::Schema.define(:version => 20121028204035) do
     t.integer  "rating_value_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.text     "result_content"
   end
 
   add_index "ratings", ["rating_value_id"], :name => "index_ratings_on_rating_value_id"
   add_index "ratings", ["search_item_id"], :name => "index_ratings_on_search_item_id"
+
+  create_table "reflections", :force => true do |t|
+    t.integer  "search_item_id"
+    t.text     "reflection"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "reflections", ["search_item_id"], :name => "index_reflections_on_search_item_id"
 
   create_table "role_assignments", :force => true do |t|
     t.integer  "person_id"

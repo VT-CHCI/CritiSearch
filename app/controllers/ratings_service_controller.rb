@@ -9,6 +9,11 @@ class RatingsServiceController < ActionController::Base
     url = params[:url]
     person = params[:person]
     query = params[:query]
+    resultContent = params[:resultContent].gsub(/"/, '\\"')
+
+    logger.debug "result_content"
+    logger.debug resultContent
+
     if params[:ratingValue]
       ratingValue = params[:ratingValue]
       #find the ratingValue in the database
@@ -42,6 +47,7 @@ class RatingsServiceController < ActionController::Base
           rating.delete
         else
           rating.rating_value_id = rv.id
+          rating.result_content = resultContent
           rating.save
         end
       else
@@ -59,6 +65,7 @@ class RatingsServiceController < ActionController::Base
           newRating.search_item_id=searchItems.first['si']
           newRating.url = url
           newRating.rating_value_id = rv.id
+          newRating.result_content = resultContent
           newRating.save
         end
       end
