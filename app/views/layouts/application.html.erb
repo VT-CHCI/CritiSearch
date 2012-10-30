@@ -107,9 +107,12 @@
             <% end %>
             <!-- <h2>Left Nav</h2> -->
             <ul class="nav nav-list">
-              <li class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
               <% if !on_home_page %>
-                <li><a id="ask-audience" href="#"><i class="icon-group"></i>Ask the Audience</a></li>
+                <li id="home-link-li" class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
+              <% end %>
+              <!-- <li id="search-link-li"><a href="/search"><i class="icon-search"></i>Search</a></li> -->
+              <% if !on_home_page %>
+                <li id="ask-audience-li"><a id="ask-audience" href="#"><i class="icon-group"></i>Ask the Audience</a></li>
                 <li><a id="venn-link" href="#"><i class="icon-columns"></i>Venn</a></li>
               <% end %>
             </ul>
@@ -118,7 +121,7 @@
         <!-- /left sidebar -->
 
         <!-- center/main content -->
-        <div class="span8">
+        <div class="span8 main">
           <% if on_home_page %>
             <div class="<%= search_bar_location %>">
               <object id="logo" type="image/svg+xml" data="<%= image_path("critter-logo-text.svg") %>"></object>

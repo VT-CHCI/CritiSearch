@@ -42,6 +42,7 @@ class SearchController < ApplicationController
       #need to get DB ratings for this person's search
       if person_signed_in?
         gon.ratings = current_person.ratingsHash(query)
+        gon.audience = current_person.audienceRatings(query)
       end
 
 
