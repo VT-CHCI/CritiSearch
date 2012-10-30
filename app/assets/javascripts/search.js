@@ -34,6 +34,11 @@ $(document).ready(function() {
         function() {
           $("#ask-audience-li").addClass("active");
           replaceRatingControlsWithAggregates();
+          $('.search .results .result-div .content').unbind('mouseenter');
+          $('.search .results .result-div .content').mouseenter(function(){
+            $(deletedClass+" p").addClass("greyed");
+            $(this).find("p").removeClass("greyed");
+          });
         }
       );
       $("#ask-audience-prompt").modal('hide');
@@ -47,29 +52,42 @@ $(document).ready(function() {
     return $("#student-reflection").val().length > 10;
   }
   function replaceRatingControlsWithAggregates () {
+    $(".rtab-container img").remove();
+    $(".rtab-container div").text("0");
+    $(".check-image").addClass("green-bg");
+    $(".delete-image").addClass("red-bg");
+
+    // $(".result-div").addClass("active-result");
+    $(".result-div").addClass("venn-result");
+    $('.delete-image').show();
+    $('.rtab-image').show();
+    $('.check-image').show();
+
     $(".result-div").each(function(){
       var elem = $(this);
       // check if it's url is in the hash
       var url = elem.find(".result-title a").attr("href");
       if (gon.audience[url]) {
         // if it is put the rating number in place of the appropriate icon
-        $.each(gon.audience[url], function(idx, val){
-          if (idx == "up") {
-            elem.find(".controls .check-image").replaceWith('<span>' + val + '</span>');
-          }
-          else {
-            elem.find(".controls .delete-image").replaceWith('<span>' + val + '</span>');
-          }
-        });
-      }
-      else {
-        elem.find(".controls .check-image").replaceWith('<span>0</span>');
-        elem.find(".controls .delete-image").replaceWith('<span>0</span>');
-      }
+        if (gon.audience[url]["up"]) {
+          var div = elem.find(".controls .check-image");//replaceWith('<span>' + val + '</span>');
+            div.text(gon.audience[url]["up"]);
+        }
 
-      
-
-      //if it's not just empty the icon
+        if (gon.audience[url]["down"]) {
+          // elem.find(".controls .delete-image").replaceWith('<span>' + val + '</span>');
+            var div = elem.find(".controls .check-image");//replaceWith('<span>' + val + '</span>');
+            div.text(gon.audience[url]["down"]);
+        }
+        // $.each(gon.audience[url], function(idx, val){
+        //   if (idx == "up") {
+            
+        //   }
+        //   else {
+            
+        //   }
+        // });
+      }
 
     });
   }
@@ -107,6 +125,7 @@ $(document).ready(function() {
 	
 
 	function searchResultMouseEnter () {
+    $(".active-result").find("p.deleted-result").addClass("greyed");
     $(".active-result").removeClass("active-result");
 		var parent = $(this).parent();
     hideContextImages(parent);
@@ -119,8 +138,9 @@ $(document).ready(function() {
     // Only show image if it does not have the checkedClass
     var checkImage = parent.find('.check-image');
     // var top = parent.height() - checkImage.height() - 3;
-    checkImage.css('top', top);
+    // checkImage.css('top', top);
     checkImage.show();
+    $(".active-result").find("p.deleted-result").removeClass("greyed");
 	}
 
 	// Function that does the actual hiding of delete and check images
@@ -192,7 +212,7 @@ $(document).ready(function() {
           $(this).parents(".result-div").removeClass(checkedClass);
         }
       }
-      $(this).parents(".result-div").find("p").toggleClass(deletedClass);
+      $(this).parents(".result-div").find("p").toggleClass(deletedClass+" greyed");
       $(this).parents(".result-div").toggleClass(deletedClass);
 
       
@@ -239,7 +259,7 @@ $(document).ready(function() {
           if (--rearrangements == 0) {
             $("#rearrange").addClass("disabled");
           }
-          $(this).parents(".result-div").find("p").removeClass(deletedClass);
+          $(this).parents(".result-div").find("p").removeClass(deletedClass+" greyed");
           $(this).parents(".result-div").removeClass(deletedClass);
         }
       }
@@ -288,7 +308,7 @@ $(document).ready(function() {
           result.addClass(checkedClass);
         }
         else {
-          result.addClass(deletedClass);
+          result.addClass(deletedClass+" greyed");
         }
         rearrangements++;
         $("#rearrange").removeClass("disabled");

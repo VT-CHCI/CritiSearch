@@ -220,13 +220,17 @@ div.main {
   // margin-right: 140px;
   // margin: 0px auto;
 
+  .result-title {
+    font-size: 18px;
+  }
+
   .diagram div {
     overflow: auto;
     max-height: 400px;
   }
   
   p {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .ups p {
