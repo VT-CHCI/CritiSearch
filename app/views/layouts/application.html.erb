@@ -89,6 +89,31 @@
 
         <!-- center/main content -->
         <div class="span8 main">
+          <div id="ask-audience-prompt" class="modal hide fade">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3>Ask the Audience?</h3>
+            </div>
+            <div class="modal-body">
+              <div class="hidden alert alert-error" id="reflection-validation-errors">
+                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                <strong>We nedd a bit more reflection from you</strong> Please take these suggestions and improve on your reflection.
+              </div>
+              <form class="form-horizontal">
+                <div class="control-group">
+                  <p>Here are some instructions about the reflection</p>
+                  <label class="control-label" for="reflection" class="control-label">Reflection</label>
+                  <div class="controls">
+                    <textarea name="reflection" id="student-reflection" rows="3"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn" id="cancel-ask-audience">Close</a>
+              <a href="#" class="btn btn-primary" id="submit-reflection">I'm finished reflecting, Ask the Audience!</a>
+            </div>
+          </div>
           <% if on_home_page %>
             <div class="<%= search_bar_location %>">
               <object id="logo" type="image/svg+xml" data="<%= image_path("critter-logo-text.svg") %>"></object>
