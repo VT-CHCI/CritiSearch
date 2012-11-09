@@ -4,5 +4,5 @@ class RoleAssignment < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :person, :role, :role_id
+  attr_accessible :person, :role, :role_id, :person_id
 end

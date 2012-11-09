@@ -1,7 +1,0 @@
-yes:
-  id: 1
-  name: "up"
-
-no:
-  id: 2
-  name: "down"
