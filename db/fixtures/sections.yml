@@ -1,5 +1,5 @@
-CompThink:
-  id: 5
-  course_id: 5
-  school_id: 4
-  teacher_id: 1
+AdvEnglish:
+  id: 1
+  course_id: 4
+  school_id: 1
+  teacher_id: 100

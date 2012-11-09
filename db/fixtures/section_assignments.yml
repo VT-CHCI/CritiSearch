@@ -1,29 +1,78 @@
 compthink_student_1:
-  id: 1
-  person_id: 3
-  section_id: 5
-
-compthink_student_2:
-  id: 2
-  person_id: 4
-  section_id: 5
-
-compthink_student_3:
-  id: 3
-  person_id: 5
-  section_id: 5
-
-compthink_student_4:
-  id: 4
-  person_id: 6
-  section_id: 5
-
-compthink_student_5:
-  id: 5
-  person_id: 7
-  section_id: 5
-
-compthink_student_6:
-  id: 6
-  person_id: 8
-  section_id: 5
+  person_id: 9
+  section_id: 1
+compthink_student_1:
+  person_id: 10
+  section_id: 1
+compthink_student_1:
+  person_id: 11
+  section_id: 1
+compthink_student_1:
+  person_id: 12
+  section_id: 1
+compthink_student_1:
+  person_id: 13
+  section_id: 1
+compthink_student_1:
+  person_id: 14
+  section_id: 1
+compthink_student_1:
+  person_id: 15
+  section_id: 1
+compthink_student_1:
+  person_id: 16
+  section_id: 1
+compthink_student_1:
+  person_id: 17
+  section_id: 1
+compthink_student_1:
+  person_id: 18
+  section_id: 1
+compthink_student_1:
+  person_id: 19
+  section_id: 1
+compthink_student_1:
+  person_id: 20
+  section_id: 1
+compthink_student_1:
+  person_id: 21
+  section_id: 1
+compthink_student_1:
+  person_id: 22
+  section_id: 1
+compthink_student_1:
+  person_id: 23
+  section_id: 1
+compthink_student_1:
+  person_id: 24
+  section_id: 1
+compthink_student_1:
+  person_id: 25
+  section_id: 1
+compthink_student_1:
+  person_id: 26
+  section_id: 1
+compthink_student_1:
+  person_id: 9
+  section_id: 27
+compthink_student_1:
+  person_id: 9
+  section_id: 28
+compthink_student_1:
+  person_id: 9
+  section_id: 29
+compthink_student_1:
+  person_id: 9
+  section_id: 30
+compthink_student_1:
+  person_id: 9
+  section_id: 31
+compthink_student_1:
+  person_id: 9
+  section_id: 32
+compthink_student_1:
+  person_id: 9
+  section_id: 33
+compthink_student_1:
+  person_id: 9
+  section_id: 34
