@@ -3,12 +3,7 @@ $(document).ready(function() {
 	var checkedClass = 'checked-result';
 	var locked = false;
 
-  var rearrangements = 0;
-
   var logTypes = {"action":3}
-
-  $("#search-link-li").addClass("active");
-  $("#home-link-li").removeClass("active");
 
   $("#venn-link").attr("href", "/venn/"+$("#q").val());
 
@@ -26,7 +21,7 @@ $(document).ready(function() {
 	
 
 	function searchResultMouseEnter () {
-    $(".active-result").find("p.deleted-result").addClass("greyed");
+    $(".active-result").find("p."+deletedClass).addClass("greyed");
     $(".active-result").removeClass("active-result");
 		var parent = $(this).parent();
     hideContextImages(parent);
@@ -41,7 +36,7 @@ $(document).ready(function() {
     // var top = parent.height() - checkImage.height() - 3;
     // checkImage.css('top', top);
     checkImage.show();
-    $(".active-result").find("p.deleted-result").removeClass("greyed");
+    $(".active-result").find("p."+deletedClass).removeClass("greyed");
 	}
 
 	// Function that does the actual hiding of delete and check images
@@ -83,9 +78,9 @@ $(document).ready(function() {
             console.log("callback");
           }
         );
-        if (--rearrangements == 0) {
-          $("#rearrange").addClass("disabled");
-        }
+        // if (--rearrangements == 0) {
+        //   $("#rearrange").addClass("disabled");
+        // }
       }
       else {
         sendLog([[logTypes["action"], "toggle delete: on for: " + getURLForAnnotationControl($(this))]]);
@@ -101,19 +96,20 @@ $(document).ready(function() {
             console.log("callback");
           }
         );
-        if (rearrangements++ == 0) {
-          $("#rearrange").removeClass("disabled"); 
-        }
+        // if (rearrangements++ == 0) {
+        //   $("#rearrange").removeClass("disabled"); 
+        // }
         if ($(this).parents(".result-div").find("p").hasClass(checkedClass)) {
           sendLog([[logTypes["action"], "toggle checked: off (via delete on) for: " + getURLForAnnotationControl($(this))]]);
-          if (--rearrangements == 0) {
-            $("#rearrange").addClass("disabled");
-          }
-          $(this).parents(".result-div").find("p").removeClass(checkedClass);
-          $(this).parents(".result-div").removeClass(checkedClass);
+          // if (--rearrangements == 0) {
+          //   $("#rearrange").addClass("disabled");
+          // }
+          var resultDiv = $(this).parents(".result-div");
+          resultDiv.find("p").removeClass(checkedClass);
+          resultDiv.removeClass(checkedClass);
         }
       }
-      $(this).parents(".result-div").find("p").toggleClass(deletedClass+" greyed");
+      $(this).parents(".result-div").find("p").toggleClass(deletedClass);
       $(this).parents(".result-div").toggleClass(deletedClass);
 
       
@@ -133,13 +129,14 @@ $(document).ready(function() {
             console.log("callback");
           }
         );
-        if (--rearrangements == 0) {
-          $("#rearrange").addClass("disabled");
-        }
+        // if (--rearrangements == 0) {
+        //   $("#rearrange").addClass("disabled");
+        // }
       }
       else {
         sendLog([[logTypes["action"], "toggle check: on for: " + getURLForAnnotationControl($(this))]]);
         console.log("about to post to ajaxratings");
+
         $.post("/ajaxratings", 
           {
             url: getURLForAnnotationControl($(this)),
@@ -152,16 +149,17 @@ $(document).ready(function() {
             console.log("callback");
           }
         );
-        if (rearrangements++ == 0) {
-          $("#rearrange").removeClass("disabled"); 
-        }
+        // if (rearrangements++ == 0) {
+        //   $("#rearrange").removeClass("disabled"); 
+        // }
         if ($(this).parents(".result-div").find("p").hasClass(deletedClass)) {
           sendLog([[logTypes["action"], "toggle deleted: off (via check on) for: " + getURLForAnnotationControl($(this))]]);
-          if (--rearrangements == 0) {
-            $("#rearrange").addClass("disabled");
-          }
-          $(this).parents(".result-div").find("p").removeClass(deletedClass+" greyed");
-          $(this).parents(".result-div").removeClass(deletedClass);
+          // if (--rearrangements == 0) {
+          //   $("#rearrange").addClass("disabled");
+          // }
+          var resultDiv = $(this).parents(".result-div");
+          resultDiv.find("p").removeClass(deletedClass+" greyed");
+          resultDiv.removeClass(deletedClass);
         }
       }
       $(this).parents(".result-div").find("p").toggleClass(checkedClass);
@@ -204,15 +202,18 @@ $(document).ready(function() {
     if (typeof gon != 'undefined') {
       console.log("in gon if");
       $.each(gon.ratings, function(url, rating){
-        var result = $('a[href="'+url+'"]').parents(".result-div").find("p");
+        var resultDiv = $('a[href="'+url+'"]').parents(".result-div");
+        var result = resultDiv.find("p");
         if (rating == "up") {
           result.addClass(checkedClass);
+          resultDiv.addClass(checkedClass);
         }
         else {
           result.addClass(deletedClass+" greyed");
+          resultDiv.addClass(deletedClass);
         }
-        rearrangements++;
-        $("#rearrange").removeClass("disabled");
+        // rearrangements++;
+        // $("#rearrange").removeClass("disabled");
       });
     }
   }
@@ -267,11 +268,11 @@ $(document).ready(function() {
       // constant to be added for unchecked
       var deletededAddend = 400;
 
-      $(".result-div.checked-result").each(function(){
+      $(".result-div."+checkedClass).each(function(){
         $(this).attr("order", parseInt($(this).attr("order")) + checkedAddend);
       });
 
-      $(".result-div.deleted-result").each(function(){
+      $(".result-div."+deletedClass).each(function(){
         $(this).attr("order", parseInt($(this).attr("order")) + deletededAddend);
       }); 
 
@@ -285,8 +286,8 @@ $(document).ready(function() {
 
       //turn off load more on scroll
       $(window).unbind("scroll");
-      $("#originalSort").removeClass("disabled");
-      $("#rearrange").addClass("disabled");
+      // $("#originalSort").removeClass("disabled");
+      // $("#rearrange").addClass("disabled");
     // }
     // else {
     //   originalSort($(this));
@@ -300,8 +301,8 @@ $(document).ready(function() {
     sendLog([[logTypes["action"], "clicked undo critisort: for: " + $("#q").val()]]);
       // $(this).text("CritiSORT!"); 
       $("#rearrange").text("CritiSORT!");
-      $("#originalSort").addClass("disabled");
-      $("#rearrange").removeClass("disabled");
+      // $("#originalSort").addClass("disabled");
+      // $("#rearrange").removeClass("disabled");
       var results = $(".result-div").sort(function(a,b) {
         return $(a).attr("original-order") - $(b).attr("original-order");
       });

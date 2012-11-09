@@ -23,6 +23,7 @@ class SearchController < ApplicationController
 
     # Extract query from GET params
     query = params[:q]
+    query.strip!
 
     if query.nil? or query.length < 1
       redirect_to "/"

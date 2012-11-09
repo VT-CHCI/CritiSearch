@@ -1,14 +1,24 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :id_number %><br />
-  <%= f.text_field :id_number %></div>
+<%= form_for(resource, 
+      :as => resource_name, 
+      :url => session_path(resource_name), 
+      :html => { :class => "form-horizontal"}) do |f| %>
+  <div class="control-group">
+    <%= f.label :id_number, :class => 'control-label' %>
+    <%= f.text_field :id_number %>
+  </div>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <%= f.text_field :first_name %>
+  </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me, :checked => true %> <%= f.label :remember_me %></div>
+    <div class="control-group">
+      <%= f.check_box :remember_me, :checked => true %>
+      <%= f.label :remember_me, :class => 'control-label' %>
+    </div>
   <% end -%>
 
   <div><%= f.submit "Sign in" %></div>

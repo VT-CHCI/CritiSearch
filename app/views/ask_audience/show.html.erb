@@ -1,7 +1,17 @@
-<div class="row">
-	<div class="span12">
-    <% @ratings.each do |rating| %>
-			<%= rating.result_content.html_safe %>
-		<% end %>
-	</div>
+
+<div class="results audience">
+  <% @ratings.each do |url, rating| %>
+    <div class="result-div venn-result">
+      <div class="content">
+
+    		<%= rating["content"].gsub(/\\"/, '"').html_safe %>
+      </div>
+      <div class="controls">
+        <div class="rtab-container">
+          <div class="check-image green-bg" style="display: block;"><%=rating["up"]%></div>
+          <div class="delete-image red-bg" style="display: block;"><%=rating["down"]%></div>
+        </div>
+      </div>
+    </div>
+	<% end %>
 </div>

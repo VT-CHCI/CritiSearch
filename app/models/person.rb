@@ -80,25 +80,50 @@ class Person < ActiveRecord::Base
     return Hash["up"=>ups, "down"=>downs]
   end
 
-  def audienceRatings (query)
-    audienceRatings = Hash.new
-
-    #get my section
-    s = SectionAssignment.where(:person_id=>self.id).first
-    assignments = SectionAssignment.where(:section_id => s.section_id)
-    classmates = assignments.map{|x| x.person_id != 3? x.person_id : nil}.compact
-
-    #get classmates
-    # classmates = assignments.collect{|x| x.person_id}
-
-    # get all the other people's ratings
-    searches = SearchList.where(:person_id=>classmates)
+  def audienceRatings (query="")
+    searches = SearchList.where(:person_id=>self.classmates)
     search_ids = searches.collect{|x| x.id}
-    items = SearchItem.where(:search_list_id => search_ids, :query=>query)
+    if query.length > 0
+      items = SearchItem.where(:search_list_id => search_ids, :query=>query)
+    else
+      items = SearchItem.where(:search_list_id => search_ids)
+    end
     item_ids = items.collect{|x| x.id}
     ratings = Rating.where(:search_item_id=>item_ids)
     return Person.audienceHash(ratings)
     
+  end
+
+  def audienceForAllQueries
+    audienceRatings = Hash.new
+
+    # searches = SearchList.where(:person_id=>self.classmates)
+    # search_ids = searches.collect{|x| x.id}
+    # items = SearchItem.where(:search_list_id => search_ids)
+    # item_ids = items.collect{|x| x.id}
+
+    sql = "
+      select search_items.query as query, rating_values.name as rv
+      from search_lists
+      join search_items on search_items.search_list_id = search_lists.id
+      join ratings on search_items.id = ratings.search_item_id
+      join rating_values on ratings.rating_value_id = rating_values.id
+      where search_lists.person_id in #{self.classmates}
+    ".gsub(/\[/,"(").gsub(/\]/,")")
+
+    results = ActiveRecord::Base.connection.execute(sql).to_a
+
+    results.each do |result|
+      if not audienceRatings[result["query"]]
+        audienceRatings[result["query"]] = Hash.new
+        audienceRatings[result["query"]]["up"] = 0
+        audienceRatings[result["query"]]["down"] = 0
+      end
+      audienceRatings[result["query"]][result["rv"]] += 1
+    end
+    
+    # ratings = Rating.where(:search_item_id=>item_ids)
+    return audienceRatings
   end
 
   def self.toRatingsHash (ratings)
@@ -121,10 +146,21 @@ class Person < ActiveRecord::Base
 
       else
         audienceHash [rating.url] = Hash.new
+        audienceHash [rating.url]["up"] = 0
+        audienceHash [rating.url]["down"] = 0
         audienceHash [rating.url][rating.rating_value.name] = 1
       end
+      audienceHash [rating.url]["content"] = rating.result_content
     end
+    logger.debug(audienceHash)
     return audienceHash
+  end
+
+  def classmates 
+    s = SectionAssignment.where(:person_id=>self.id).first
+    assignments = SectionAssignment.where(:section_id => s.section_id)
+    classmates = assignments.collect{|x| x.id != self.id ? x.person_id : nil}.compact
+    return classmates
   end
 
 end

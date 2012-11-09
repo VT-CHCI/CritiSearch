@@ -1,10 +1,13 @@
+
 <div class="row diagram">
 	<div class="span6 ups">
+    <h3>You gave these results a thumbs up.</h3>
 		<% @ups.each do |rating| %>
 			<%= rating.result_content.html_safe %>
 		<% end %>
 	</div>
 	<div class="span6 downs">
+    <h3>You gave these results an X.</h3>
     <% @downs.each do |rating| %>
       <%= rating.result_content.html_safe %>
     <% end %>

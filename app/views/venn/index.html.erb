@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div class="middle-content clearfix">
+  <h2>Your past search terms</h2>
+  <h4>Click one to see it in "Venn Mode"</h4><br />
+  <% @search_items.each do |item| %>
+    
+    <ul>
+      <li>
+        <%= link_to item.query, "/venn/#{item.query}" %>
+      </li>
+    </ul>
+    
+  <% end %>
+</div>

@@ -9,7 +9,11 @@ class RatingsServiceController < ActionController::Base
     url = params[:url]
     person = params[:person]
     query = params[:query]
-    resultContent = params[:resultContent].gsub(/"/, '\\"')
+    resultContent = params[:resultContent]
+
+    if !resultContent.nil?
+      resultContent = resultContent.gsub(/"/, '\\"')
+    end
 
     logger.debug "result_content"
     logger.debug resultContent

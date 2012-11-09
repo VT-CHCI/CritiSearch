@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div class="middle-content clearfix">
+  <h2>Recent search terms from your class</h2>
+  <% @search_items.each do |item| %>
+    <ul>
+      <li>
+        <%= link_to item.query, "/askthem/#{item.query}" %> 
+        <% if @ratings[item.query] %>
+          <ul>
+            <li class="green-bg"><%= image_tag("thumbs_up.png") %> <%= @ratings[item.query]["up"] %></li> 
+            <li class="green-bg"><%= image_tag("x-mark.png") %> <%= @ratings[item.query]["down"] %></li>
+          </ul>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>

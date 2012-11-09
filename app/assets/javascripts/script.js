@@ -11,27 +11,31 @@ $(document).ready(function() {
   });
 
   $("#submit-reflection").click(function(){
-    if (reflectionValidates()) {
-      $.post("/reflection", 
-        {
-          query: $("#q").val(),
-          person: $("#current_person_id").text(),
-          reflection: $("#student-reflection").val()
-        }, 
-        function() {
-          $("#ask-audience-li").addClass("active");
-          replaceRatingControlsWithAggregates();
-          $('.search .results .result-div .content').unbind('mouseenter');
-          $('.search .results .result-div .content').mouseenter(function(){
-            $(deletedClass+" p").addClass("greyed");
-            $(this).find("p").removeClass("greyed");
-          });
-        }
-      );
-      $("#ask-audience-prompt").modal('hide');
+    if ($("body").hasClass("home")) {
+      if (reflectionValidates()) {
+        window.location="/askthem"
+      }
     }
     else {
-      $("#reflection-validation-errors").removeClass("hidden");
+      if (reflectionValidates()) {
+        $.post("/reflection", 
+          {
+            query: $("#q").val(),
+            person: $("#current_person_id").text(),
+            reflection: $("#student-reflection").val()
+          }, 
+          function() {
+            $("#ask-audience-li").addClass("active");
+            replaceRatingControlsWithAggregates();
+            $('.search .results .result-div .content').unbind('mouseenter');
+            $(window).unbind("scroll");
+          }
+        );
+        $("#ask-audience-prompt").modal('hide');
+      }
+      else {
+        $("#reflection-validation-errors").removeClass("hidden");
+      }
     }
   });
 
@@ -113,7 +117,7 @@ function sendLog (logInfoPairs) {
   }
 
   console.log("ajaxing");
-  $.ajax("http://localhost:3000/interaction_logs/service", 
+  $.ajax("http://test.astronomicalproportions.org/interaction_logs/service", 
     {
       data: {"logs":logs, "application": "CritiSearch"}, 
       type: "POST",

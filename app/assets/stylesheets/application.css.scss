@@ -270,13 +270,14 @@ div.main {
         padding: 2px;
     }
 
-    p.checked-result {
-      background-color:#8FFF92;
-    }
+    // p.checked-result {
+    //   background-color:#8FFF92;
+    // }
 
-    p.deleted-result {
-      text-decoration:  line-through;
-    }
+    // p.deleted-result {
+    //   // text-decoration:  line-through;
+    //   background-color:#FF8F92;
+    // }
 
     .controls {
       width: 28px;
@@ -284,12 +285,18 @@ div.main {
       float: right;
       clear: none;
       margin-top: 8px;
+      text-align: center;
 
       .rtab-container {
         background: url("right_tab_only.png") no-repeat;
         background-size: 22px 65px;
         height: 76px;
-        display: none;
+        padding-top: 2px;
+        // display: none;
+        div {
+          max-width: 18px;
+          font-weight: bold;
+        }
       }
 
       .rtab-image {
@@ -383,4 +390,31 @@ div.main {
       bottom: 0px;
     }
   }  
+}
+
+.audience {
+  .result-div.venn-result {
+    p {
+        border: 2px solid #000000;
+        min-height: 74px;
+    }
+    .rtab-container {
+      display: block;
+      background: url("black-tab.png") no-repeat;
+      background-attachment: scroll;
+      background-clip: border-box;
+      background-color: transparent;
+      background-origin: padding-box;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: 22px 65px;
+    }
+  }  
+  .green-bg {
+    background-color: #8FFF92;
+  }
+
+  .red-bg {
+    background-color: #FF8F92;
+  }
 }

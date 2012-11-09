@@ -24,7 +24,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <body class='page <%= controller.controller_name %>'>
+  <body class='page <%= controller.controller_name %> <% if on_home_page %>home<% end %>'>
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -32,15 +32,23 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="/">CritiSearch</a>
-          <% if !on_home_page %>
-            <div class="<%= search_bar_location %> dashboard">
-              <%= render 'search/search_bar' %>
+          <div class="row-fluid">
+            <div class="span2">
+              <a class="brand" href="/">CritiSearch</a>
             </div>
-          <% end %>
-          <% if person_signed_in? %>
-            <span class="span2 pull-right header-message">Signed in as <%= current_person.first_name %>.</span>
-          <% end %>
+            <div class="span8">
+              <% if !on_home_page %>
+                <div class="<%= search_bar_location %> dashboard">
+                  <%= render 'search/search_bar' %>
+                </div>
+              <% end %>
+            </div>
+            <div class="span2">
+              <% if person_signed_in? %>
+                <span class="header-message">Signed in as <%= current_person.first_name %>.</span>
+              <% end %>
+            </div>
+          </div>
         </div> <!-- /container -->
         
       </div> <!-- /navbar-inner -->
@@ -74,13 +82,13 @@
             <% end %>
             <!-- <h2>Left Nav</h2> -->
             <ul class="nav nav-list">
-              <% if !on_home_page %>
-                <li id="home-link-li" class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
-              <% end %>
-              <!-- <li id="search-link-li"><a href="/search"><i class="icon-search"></i>Search</a></li> -->
+              <li id="home-link-li" class="<%= on_home_page ? "active": "" %>"><a href="/"><i class="icon-home"></i>Home</a></li>
+              
               <% if person_signed_in? %>
-                <li id="ask-audience-li"><a id="ask-audience" href="#"><i class="icon-group"></i>Ask the Audience</a></li>
-                <li><a id="venn-link" href="#"><i class="icon-columns"></i>Venn</a></li>
+                <% if current_page?("/") or current_page?("/search") %>
+                  <li id="ask-audience-li"><a id="ask-audience" href="#"><i class="icon-group"></i>Ask the Audience</a></li>
+                <% end %>
+                <li class="<%= current_page?("/venn") ? "active": "" %>"><a id="venn-link" href="#"><i class="icon-columns"></i>Venn</a></li>
               <% end %>
             </ul>
           </div>
@@ -97,15 +105,33 @@
             <div class="modal-body">
               <div class="hidden alert alert-error" id="reflection-validation-errors">
                 <a class="close" data-dismiss="alert" href="#">&times;</a>
-                <strong>We nedd a bit more reflection from you</strong> Please take these suggestions and improve on your reflection.
+                <strong>We nedd a bit more reflection from you</strong> Please write a bit more about your experience.
               </div>
               <form class="form-horizontal">
                 <div class="control-group">
-                  <p>Here are some instructions about the reflection</p>
-                  <label class="control-label" for="reflection" class="control-label">Reflection</label>
+                  <p>What is the best website you have found for this topic so far?</p>
                   <div class="controls">
                     <textarea name="reflection" id="student-reflection" rows="3"></textarea>
                   </div>
+                  <p>How do you rate this website?</p>
+                  <label class="radio inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>(Worst)1</label>
+                  <label class="radio inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    2
+                  </label>
+                  <label class="radio inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    3
+                  </label>
+                  <label class="radio inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    4
+                  </label>
+                  <label class="radio inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    5 (Best)
+                  </label>
                 </div>
               </form>
             </div>
@@ -128,43 +154,44 @@
         <!-- Right sidebar -->
         <div class="span2">
           <div data-spy="affix">
-          <ul class="nav nav-tabs nav-stacked sidenav">
-            <% if person_signed_in? %>
-              <li>
-                <%= link_to destroy_person_session_path, :method => :delete  do %>
-                  <i class="icon-off"></i>Sign out
-                <% end %>
-              </li>
-
-              <% if not current_person.role? :student %>
+            <ul class="nav nav-tabs nav-stacked sidenav">
+              <% if person_signed_in? %>
                 <li>
-                  <%= link_to admins_path do %>
-                    <i class="icon-cog"></i> Administer CritiSearch
+                  <%= link_to destroy_person_session_path, :method => :delete  do %>
+                    <i class="icon-off"></i>Sign out
+                  <% end %>
+                </li>
+
+                <% if not current_person.role? :student %>
+                  <li>
+                    <%= link_to admins_path do %>
+                      <i class="icon-cog"></i> Administer CritiSearch
+                    <% end %>
+                  </li>
+                <% end %>
+
+              <% else %>
+                <li>
+                  <%= link_to new_person_session_path do %>
+                    <i class="icon-user"></i> Sign in
                   <% end %>
                 </li>
               <% end %>
 
-            <% else %>
-              <li>
-                <%= link_to new_person_session_path do %>
-                  <i class="icon-user"></i> Sign in
-                <% end %>
-              </li>
+              <% if !on_home_page %>
+                <li>
+                  <%= link_to @list do %>
+                  <i class="icon-time"></i> Recent Searches
+                  <% end %>
+                </li>
+                
+              <% end %>
+            </ul>
+            <% if current_page?("/search") %>
+              <a href="#" id="rearrange" class="btn btn-large btn-primary">CritiSORT!</a><br /><br />
+              <a href="#" id="originalSort" class="btn btn-large btn-primary">Original Sort</a>
             <% end %>
-
-            <% if !on_home_page %>
-              <li>
-                <%= link_to @list do %>
-                <i class="icon-time"></i> Recent Searches
-                <% end %>
-              </li>
-              
-            <% end %>
-          </ul>
-
-          <a href="#" id="rearrange" class="btn btn-large btn-primary disabled">CritiSORT!</a><br /><br />
-          <a href="#" id="originalSort" class="btn btn-large btn-primary disabled">Original Sort</a>
-        </div>
+          </div>
         </div> <!-- / right sidebar -->
       </div> <!-- /row -->
 
