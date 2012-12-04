@@ -32,10 +32,11 @@ Person.create([{id_number: "19", email: "19", first_name: "Mason", password: "Ma
 Person.create([{id_number: "22", email: "22", first_name: "Nathan", password: "Nathan", id: 32}])
 Person.create([{id_number: "11", email: "11", first_name: "Petra", password: "Petra", id: 33}])
 Person.create([{id_number: "26", email: "26", first_name: "Taylor", password: "Taylor", id: 34}])
+students = Person.all
 
-Person.create([{id: 999, first_name: "Michael", password:"Michael", id_number: "37", email: "37"}])
-Person.create([{id: 9999, first_name: "Collin", password: "Collin", id_number: "42", email: "42"}])
-Person.create([{id: 100, first_name: "Mindy", password: "Mindy", id_number: "100", email: "100"}])
+michael = Person.create([{id: 999, first_name: "Michael", password:"Michael", id_number: "37", email: "37"}])
+collin = Person.create([{id: 9999, first_name: "Collin", password: "Collin", id_number: "42", email: "42"}])
+mindy = Person.create([{id: 100, first_name: "Mindy", password: "Mindy", id_number: "100", email: "100"}])
 
 
 Course.create([{id: 1, name: "Earth Science"}])
@@ -44,11 +45,11 @@ Course.create([{id: 2, name: "Algebra 1"}])
 
 Course.create([{id: 3, name: "Social Studies"}])
 
-Course.create([{id: 4, name: "Language Arts"}])
+englishCourse = Course.create([{id: 4, name: "Language Arts"}])
 
 Course.create([{id: 5, name: "Computational Thinking"}])
 
-School.create([{id: 1, name: "Holman Middle School", time_zone: "Eastern Time (US & Canada)"}])
+holman = School.create([{id: 1, name: "Holman Middle School", time_zone: "Eastern Time (US & Canada)"}])
 
 School.create([{id: 2, name: "Fairfield Middle School", time_zone: "Eastern Time (US & Canada)"}])
 
@@ -56,72 +57,25 @@ School.create([{id: 3, name: "Otherone Middle School", time_zone: "Eastern Time 
 
 School.create([{id: 4, name: "Virginia Tech", time_zone: "Eastern Time (US & Canada)"}])
 
-Section.create([{id: 1, course_id: 4, school_id: 1, teacher_id: 100}])
+s = Section.create([{id: 1, course_id: englishCourse.id, school_id: holman.id, teacher_id: mindy.id}])
 
-SectionAssignment.create([{person_id: 9, section_id: 1}])
-SectionAssignment.create([{person_id: 10, section_id: 1}])
-SectionAssignment.create([{person_id: 11, section_id: 1}])
-SectionAssignment.create([{person_id: 12, section_id: 1}])
-SectionAssignment.create([{person_id: 13, section_id: 1}])
-SectionAssignment.create([{person_id: 14, section_id: 1}])
-SectionAssignment.create([{person_id: 15, section_id: 1}])
-SectionAssignment.create([{person_id: 16, section_id: 1}])
-SectionAssignment.create([{person_id: 17, section_id: 1}])
-SectionAssignment.create([{person_id: 18, section_id: 1}])
-SectionAssignment.create([{person_id: 19, section_id: 1}])
-SectionAssignment.create([{person_id: 20, section_id: 1}])
-SectionAssignment.create([{person_id: 21, section_id: 1}])
-SectionAssignment.create([{person_id: 22, section_id: 1}])
-SectionAssignment.create([{person_id: 23, section_id: 1}])
-SectionAssignment.create([{person_id: 24, section_id: 1}])
-SectionAssignment.create([{person_id: 25, section_id: 1}])
-SectionAssignment.create([{person_id: 26, section_id: 1}])
-SectionAssignment.create([{person_id: 27, section_id: 1}])
-SectionAssignment.create([{person_id: 28, section_id: 1}])
-SectionAssignment.create([{person_id: 29, section_id: 1}])
-SectionAssignment.create([{person_id: 30, section_id: 1}])
-SectionAssignment.create([{person_id: 31, section_id: 1}])
-SectionAssignment.create([{person_id: 32, section_id: 1}])
-SectionAssignment.create([{person_id: 33, section_id: 1}])
-SectionAssignment.create([{person_id: 34, section_id: 1}])
 
-Role.create([{id: 1, name: "SuperAdmin"}])
+adminRole = Role.create([{id: 1, name: "SuperAdmin"}])
 Role.create([{id: 2, name: "SchoolAdmin"}])
-Role.create([{id: 3, name: "Teacher"}])
-Role.create([{id: 4, name: "Student"}])
+teacherRole = Role.create([{id: 3, name: "Teacher"}])
+studentRole = Role.create([{id: 4, name: "Student"}])
 
-RoleAssignment.create([{person_id:9, role_id:4}])
-RoleAssignment.create([{person_id:10, role_id:4}])
-RoleAssignment.create([{person_id:11, role_id:4}])
-RoleAssignment.create([{person_id:12, role_id:4}])
-RoleAssignment.create([{person_id:13, role_id:4}])
-RoleAssignment.create([{person_id:14, role_id:4}])
-RoleAssignment.create([{person_id:15, role_id:4}])
-RoleAssignment.create([{person_id:16, role_id:4}])
-RoleAssignment.create([{person_id:17, role_id:4}])
-RoleAssignment.create([{person_id:18, role_id:4}])
-RoleAssignment.create([{person_id:19, role_id:4}])
-RoleAssignment.create([{person_id:20, role_id:4}])
-RoleAssignment.create([{person_id:21, role_id:4}])
-RoleAssignment.create([{person_id:22, role_id:4}])
-RoleAssignment.create([{person_id:23, role_id:4}])
-RoleAssignment.create([{person_id:24, role_id:4}])
-RoleAssignment.create([{person_id:25, role_id:4}])
-RoleAssignment.create([{person_id:26, role_id:4}])
-RoleAssignment.create([{person_id:27, role_id:4}])
-RoleAssignment.create([{person_id:28, role_id:4}])
-RoleAssignment.create([{person_id:29, role_id:4}])
-RoleAssignment.create([{person_id:30, role_id:4}])
-RoleAssignment.create([{person_id:31, role_id:4}])
-RoleAssignment.create([{person_id:32, role_id:4}])
-RoleAssignment.create([{person_id:33, role_id:4}])
-RoleAssignment.create([{person_id:34, role_id:4}])
-RoleAssignment.create([{person_id:100, role_id:3}])
-RoleAssignment.create([{person_id:999, role_id:1}])
-RoleAssignment.create([{person_id:9999, role_id:1}])
+students.each do |person|
+  SectionAssignment.create([{person_id: person.id, section_id: s.id}]) 
+  RoleAssignment.create([{person_id: person.id, role_id:studentRole.id}]) 
+end
+
+RoleAssignment.create([{person_id: mindy.id, role_id:teacherRole.id}]) 
+RoleAssignment.create([{person_id: michael.id, role_id:adminRole.id}]) 
+RoleAssignment.create([{person_id: collin.id, role_id:adminRole.id}]) 
 
 RatingValue.create([{id: 1, name: "up"}])
 RatingValue.create([{id: 2, name: "down"}])
 
-CourseOffering.create([{id: 1, course_id: 5, school_id: 4}])
+CourseOffering.create([{id: 1, course_id: englishCourse.id, school_id: holman}])
   
