@@ -82,3 +82,5 @@ gem 'paper_trail'
 
 #gon to access ruby data in js
 gem 'gon'
+
+# gem 'ruby-debug19', :require => 'ruby-debug'

@@ -1,0 +1,19 @@
+<h1>Listing reflections</h1>
+
+<table>
+  <tr>
+    <th>Search item</th>
+    <th>Reflection</th>
+    <th>Student</th>
+  </tr>
+
+<% @reflectionPairs.each do |reflection| %>
+  <tr>
+    <td><%= reflection[0] %></td>
+    <td><%= reflection[1].reflection %></td>
+    <td><%= reflection[2] %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

@@ -13,7 +13,7 @@ class Section < ActiveRecord::Base
   has_paper_trail
 
   def summary
-    return ((self.course && self.course.name) || "<CourseName>") + " at " + ((self.school && self.school.name) || "<SchoolName>") + " by " + ((self.teacher && self.teacher.name) || "<TeacherName>")
+    return ((self.course && self.course.name) || "<CourseName>") + " at " + ((self.school && self.school.name) || "<SchoolName>") + " by " + ((self.teacher && self.teacher.first_name) || "<TeacherName>")
   end
 
 end

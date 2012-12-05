@@ -40,4 +40,6 @@ Platypus::Application.configure do
 
   config.time_zone = "Eastern Time (US & Canada)"
 
+  config.logger = Logger.new(STDOUT)
+
 end

@@ -1,7 +1,9 @@
 class SearchItem < ActiveRecord::Base
-  belongs_to :search_list;
+  belongs_to :search_list
 
   before_save :ensure_unique_query
+
+  has_many :reflections
 
   has_paper_trail
 

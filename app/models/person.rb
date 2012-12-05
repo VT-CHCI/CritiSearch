@@ -157,10 +157,27 @@ class Person < ActiveRecord::Base
   end
 
   def classmates 
+    if self.role?(:teacher)
+      return self.students
+    end
     s = SectionAssignment.where(:person_id=>self.id).first
     assignments = SectionAssignment.where(:section_id => s.section_id)
     classmates = assignments.collect{|x| x.id != self.id ? x.person_id : nil}.compact
     return classmates
+  end
+ 
+  def students
+    myStudents = []
+    if self.role?(:teacher)
+      logger.debug "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstudents"
+      logger.debug self.id
+      s = Section.where(:teacher_id=>self.id).first
+      studentAssignments = SectionAssignment.where(:section_id=>s.id)
+      sa_ids = studentAssignments.collect {|x| x.person_id}
+      students = Person.where(:id=>sa_ids)
+      myStudents = students
+    end
+    return myStudents
   end
 
 end

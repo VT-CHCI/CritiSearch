@@ -10,5 +10,7 @@
   <% if current_person.role? :teacher or current_person.role? :school_admin or current_person.role? :super_admin %>
 	  <li><a href="/students">Students</a></li>
 	  <li><a href="/section_assignments">Assign Students to Sections</a></li>
+    <li><a href="/admin/reflections">Students' Reflections</a></li>
+    <li><a href="/admin/searches">Students' Searches</a></li>
   <% end %>
 </ul>

@@ -11,8 +11,8 @@
 
 <% @section_assignments.each do |section_assignment| %>
   <tr>
-    <td><%= section_assignment.person %></td>
-    <td><%= section_assignment.section %></td>
+    <td><%= section_assignment.person.first_name %></td>
+    <td><%= section_assignment.section.summary %></td>
     <td><%= link_to 'Show', section_assignment %></td>
     <td><%= link_to 'Edit', edit_section_assignment_path(section_assignment) %></td>
     <td><%= link_to 'Destroy', section_assignment, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,0 +1,21 @@
+<h1>Listing searches</h1>
+
+<table>
+  <tr>
+    <th>Count</th>
+    <th>Query</th>
+    <!-- <th>Search item</th>
+    <th>Reflection</th>
+    <th>Student</th> -->
+  </tr>
+
+<% @sorted.each do |search| %>
+  <tr>
+    <td><%= search[1] %></td>
+
+    <td><%= link_to search[0], "/askthem/#{search[0]}" %> </td>
+  </tr>
+<% end %>
+</table>
+
+<br />

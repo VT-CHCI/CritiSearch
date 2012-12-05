@@ -9,13 +9,13 @@
     <th></th>
   </tr>
 
-<% @reflections.each do |reflection| %>
+<% @reflectionPairs.each do |reflection| %>
   <tr>
-    <td><%= reflection.search_item %></td>
-    <td><%= reflection.reflection %></td>
-    <td><%= link_to 'Show', reflection %></td>
-    <td><%= link_to 'Edit', edit_reflection_path(reflection) %></td>
-    <td><%= link_to 'Destroy', reflection, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= reflection[0] %></td>
+    <td><%= reflection[1].reflection %></td>
+    <td><%= link_to 'Show', reflection[1] %></td>
+    <td><%= link_to 'Edit', edit_reflection_path(reflection[1]) %></td>
+    <td><%= link_to 'Destroy', reflection[1], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

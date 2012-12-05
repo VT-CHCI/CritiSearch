@@ -2,7 +2,7 @@ Platypus::Application.routes.draw do
 
   
 
-  resources :reflections
+  
 
   resources :follows
 
@@ -38,6 +38,12 @@ Platypus::Application.routes.draw do
 
   scope "/admin" do
     resources :people
+    # admin.resources :reflections
+  end
+
+  namespace :admin do
+    resources :reflections
+    resources :searches
   end
 
   match "/students" => "people#index", :defaults => {:role => :student}
