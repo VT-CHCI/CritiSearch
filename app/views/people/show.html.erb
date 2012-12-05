@@ -19,5 +19,18 @@
   </ul>
 </p>
 
+<% if person_signed_in? && current_person.role?(:teacher)%>
+
+  <% if ! @person.recentSearches.nil? %>
+    <h3>Recent Searches</h3>
+    <ul>
+      <% @person.recentSearches.search_items.each do |search| %>
+        <li><%= search.query %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<% end %>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

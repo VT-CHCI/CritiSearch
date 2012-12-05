@@ -149,6 +149,7 @@ class Person < ActiveRecord::Base
         audienceHash [rating.url]["up"] = 0
         audienceHash [rating.url]["down"] = 0
         audienceHash [rating.url][rating.rating_value.name] = 1
+        audienceHash [rating.url]["rating"] = rating
       end
       audienceHash [rating.url]["content"] = rating.result_content
     end
@@ -178,6 +179,10 @@ class Person < ActiveRecord::Base
       myStudents = students
     end
     return myStudents
+  end
+
+  def recentSearches
+    return SearchList.order("created_at DESC").where(:person_id=>self.id).first
   end
 
 end

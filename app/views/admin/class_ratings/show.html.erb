@@ -1,0 +1,21 @@
+<h1>For the query: <%= @query %></h1>
+<h2>Students' ratings for the result: <%= @url %></h2>
+<hr />
+<div class="row">
+  <div class="span6">
+    <h3>Students who gave this a thumb up</h3>
+    <ul>
+      <% @ups.each do |upper| %>
+        <li><%= upper %></li>
+      <% end %>  
+    </ul>
+  </div>
+  <div class="span6">
+    <h3>Students who gave this an X</h3>
+    <ul>
+      <% @downs.each do |downer| %>
+        <li><%= downer %></li>
+      <% end %>  
+    </ul>
+  </div>
+</div>

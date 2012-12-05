@@ -8,8 +8,20 @@
       </div>
       <div class="controls">
         <div class="rtab-container">
-          <div class="check-image green-bg" style="display: block;"><%=rating["up"]%></div>
-          <div class="delete-image red-bg" style="display: block;"><%=rating["down"]%></div>
+          <div class="check-image green-bg" style="display: block;">
+            <% if person_signed_in? && current_person.role?(:teacher) %>
+              <%= link_to rating["up"], "/admin/class_ratings/#{rating['rating'].id}" %>
+            <% else %>
+              <%= rating["up"] %>
+            <% end %>
+          </div>
+          <div class="delete-image red-bg" style="display: block;">
+            <% if person_signed_in? && current_person.role?(:teacher) %>
+              <%= link_to rating["down"], "/admin/class_ratings/#{rating['rating'].id}" %>
+            <% else %>
+              <%= rating["down"] %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

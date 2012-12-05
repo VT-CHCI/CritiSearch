@@ -44,6 +44,7 @@ Platypus::Application.routes.draw do
   namespace :admin do
     resources :reflections
     resources :searches
+    resources :class_ratings
   end
 
   match "/students" => "people#index", :defaults => {:role => :student}
