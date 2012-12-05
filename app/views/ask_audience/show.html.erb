@@ -22,6 +22,12 @@
               <%= rating["down"] %>
             <% end %>
           </div>
+
+          <div class="follow-count">
+            <% if person_signed_in? && current_person.role?(:teacher) %>
+              <%= rating['rating'].search_item.follows.length %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

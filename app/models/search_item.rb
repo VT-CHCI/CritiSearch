@@ -4,6 +4,7 @@ class SearchItem < ActiveRecord::Base
   before_save :ensure_unique_query
 
   has_many :reflections
+  has_many :follows
 
   has_paper_trail
 

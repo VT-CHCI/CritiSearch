@@ -12,9 +12,12 @@ class FollowServiceController < ActionController::Base
 
       searches = SearchList.where(:person_id => person)
       search_ids = searches.collect{|x| x.id}
+      logger.debug "|#{search_ids}|"
 
       items = SearchItem.where(:search_list_id => search_ids, :query => query)
       item_id = items.collect{|x| x.id}.first
+
+      logger.debug "|#{item_id}|"
 
       f = Follow.new
       f.url = url
