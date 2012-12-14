@@ -108,8 +108,23 @@ On the front end, we employ javascript, and more specifically jQuery to do a lot
 There are also a few rails dependencies/libraries/plugins which they call "gems" that are worth mentioning. [Devise](https://github.com/plataformatec/devise/) is what we use to manage "users" logging in (we call them "people"). To manage user roles, we use [CanCan](https://github.com/ryanb/cancan). For an audit trail, we intended to use [PaperTrail](https://github.com/airblade/paper_trail) (I am not sure that we ended up adding its facilities to all our models )-: ). [Gon](https://github.com/gazay/gon) helps us access data from the rails side within client side javascript.
 
 #### Where to find things for the front end ####
+##### Main Layout and Styling #####
+`CritiSearch/app/views/layouts/application.html.erb`
+* This is where most of the HTML for this web application can be found.
+
+`CritiSearch/app/assets/stylesheets/application.css.scss`
+* This is where most of the styling is written.
+
+##### Main Javascript (for interactivity) #####
+`CritiSearch/app/assets/javascripts/script.js` &amp; `CritiSearch/app/assets/javascripts/search.js`
+* These help with CritiSort, the searching, and changing the views to show the ask the audience info.
 
 #### Where to find things on the back end ####
+##### Services #####
+I created several rough services to handle asynchronous modification of the database. These are the `CritiSearch/app/controllers/*_service_controller.rb` files. They expect an HTTP **POST** request with certain parameters (read their source).
+
+##### Data #####
+In the models, particularly `CritiSearch/app/models/person.rb`, there are methods to access various complexly-related data from the database. 
 
 #### Database Structure ####
 
