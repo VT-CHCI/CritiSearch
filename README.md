@@ -126,8 +126,6 @@ I created several rough services to handle asynchronous modification of the data
 ##### Data #####
 In the models, particularly `CritiSearch/app/models/person.rb`, there are methods to access various complexly-related data from the database. 
 
-#### Database Structure ####
-
 ### Welcome to Rails ###
 *This last section is automatically generated for new Rails applications, I left it here in case it helps a developer later (probably one who's less familiar with Rails)*
 
